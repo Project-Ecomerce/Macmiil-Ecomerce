@@ -1,11 +1,15 @@
 
 import './App.css'
+import Navbar from './pages/Navbar'
+import User from './pages/User'
+
 
 function App() {
 
   return (
     <div className="App">
-     <h1>insha allah shaqo wacan saaxiibayaa</h1> 
+    <Navbar/>
+    <User/>
     </div>
 
     
