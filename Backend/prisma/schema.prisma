@@ -1,0 +1,92 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}  
+
+
+enum Roles {
+  SUPERADMIN
+  ADMIN
+  USER
+}
+
+model users {
+  userId Int @id @default(autoincrement())
+  FirstName String
+  LastName String
+  Address String ?
+  Email String @unique
+  Password String
+  Role Roles @default(USER)
+  product product[]
+  cart cart[]
+  receipt receipt[]
+}
+
+model product {
+  ProductId Int @id @default(autoincrement())
+  Description String ?
+  Name String
+  Price String
+  Store String 
+  userId Int
+   subatCagoryId Int
+   users  users    @relation(fields: [userId], references: [userId])
+   subatCagory  subCatagory   @relation(fields: [ subatCagoryId ], references: [ subatCagoryId])
+  cart cart[]
+  receipt receipt[]
+
+
+}
+
+
+model cart {
+   userId Int 
+   ProductId Int
+  cartId Int @id @default(autoincrement())
+   qty Int @default(1)
+   users  users    @relation(fields: [userId], references: [userId])
+   product product    @relation(fields: [ProductId], references: [ProductId])
+   receipt receipt[]
+}
+
+model payment {
+  paymentId Int @id @default(autoincrement())
+  
+ 
+
+}
+
+model receipt {
+  receipt Int @id @default(autoincrement())
+   userId Int
+  cartId Int
+  ProductId Int
+   createAt Int
+   product product    @relation(fields: [ProductId], references: [ProductId])
+   users  users    @relation(fields: [userId], references: [userId])
+   cart cart    @relation(fields: [cartId], references: [cartId])
+}
+
+model subCatagory {
+  subatCagoryId Int @id @default(autoincrement())
+  type String
+  Product product[]
+  catagory catagory[]
+}
+
+
+model catagory {
+  CagoryId Int @id @default(autoincrement())
+  type String
+  subatCagoryId Int
+subCatagory subCatagory    @relation(fields: [ subatCagoryId], references: [ subatCagoryId])
+}
+
