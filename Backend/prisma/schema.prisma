@@ -27,57 +27,55 @@ model users {
   Role Roles @default(USER)
   product product[]
   cart cart[]
-  receipt receipt[]
+ payment payment[]
+ catagory catagory []
 }
 
 model product {
   ProductId Int @id @default(autoincrement())
   Description String ?
-  Name String
+   title String
   Price String
+  image String
   Store String 
   userId Int
    subatCagoryId Int
    users  users    @relation(fields: [userId], references: [userId])
    subatCagory  subCatagory   @relation(fields: [ subatCagoryId ], references: [ subatCagoryId])
   cart cart[]
-  receipt receipt[]
+  payment payment[]
 
 
 }
 
 
 model cart {
-   userId Int 
-   ProductId Int
   cartId Int @id @default(autoincrement())
    qty Int @default(1)
+    userId Int 
+   ProductId Int
    users  users    @relation(fields: [userId], references: [userId])
    product product    @relation(fields: [ProductId], references: [ProductId])
-   receipt receipt[]
+   payment payment[]
 }
 
 model payment {
   paymentId Int @id @default(autoincrement())
-  
- 
-
-}
-
-model receipt {
-  receipt Int @id @default(autoincrement())
-   userId Int
+    userId Int
   cartId Int
   ProductId Int
    createAt Int
    product product    @relation(fields: [ProductId], references: [ProductId])
    users  users    @relation(fields: [userId], references: [userId])
    cart cart    @relation(fields: [cartId], references: [cartId])
+ 
+
 }
 
 model subCatagory {
   subatCagoryId Int @id @default(autoincrement())
   type String
+  img String
   Product product[]
   catagory catagory[]
 }
@@ -87,6 +85,8 @@ model catagory {
   CagoryId Int @id @default(autoincrement())
   type String
   subatCagoryId Int
+  userId Int
+     users  users    @relation(fields: [userId], references: [userId])
 subCatagory subCatagory    @relation(fields: [ subatCagoryId], references: [ subatCagoryId])
 }
 
