@@ -16,4 +16,15 @@ router.get('/getone/:userId', user.getOne)
 router.delete('/delete/:userId', user.deleteuser)
 
 
+// update
+router.put('/update/:userId', user.update)
+
+// update role
+router.put('/role/:userId', user.updateRole)
+// register
+router.post('/new', user.registerUser);
+// login
+router.post('/login', user.login);
+
+
 module.exports = router;

@@ -28,31 +28,33 @@ model users {
   product product[]
   cart cart[]
  payment payment[]
- catagory catagory []
+ catagory catagory[]
 }
 
 model product {
   ProductId Int @id @default(autoincrement())
-  Description String ?
-   title String
+  title String
+  Description String?
   Price String
-  image String
-  Store String 
-  userId Int
-   subatCagoryId Int
-   users  users    @relation(fields: [userId], references: [userId])
-   subatCagory  subCatagory   @relation(fields: [ subatCagoryId ], references: [ subatCagoryId])
+  image String?
+  Store String
+  userId Int @default(1)
+  subatCagoryId Int @default(1)
+  users  users    @relation(fields: [userId], references: [userId])
+  subCatagory  subCatagory   @relation(fields: [ subatCagoryId ], references: [ subatCagoryId])
   cart cart[]
   payment payment[]
-
-
 }
+
+
+
+
 
 
 model cart {
   cartId Int @id @default(autoincrement())
    qty Int @default(1)
-    userId Int 
+  userId Int 
    ProductId Int
    users  users    @relation(fields: [userId], references: [userId])
    product product    @relation(fields: [ProductId], references: [ProductId])
@@ -60,15 +62,17 @@ model cart {
 }
 
 model payment {
-  paymentId Int @id @default(autoincrement())
-    userId Int
-  cartId Int
-  ProductId Int
+   id Int @id @default(autoincrement())
+   userId Int
    createAt Int
+   is_paid Boolean  @default(false)
+   is_deliveredn Boolean @default(false)
+   ProductId Int
+   cartId Int
    product product    @relation(fields: [ProductId], references: [ProductId])
    users  users    @relation(fields: [userId], references: [userId])
-   cart cart    @relation(fields: [cartId], references: [cartId])
- 
+   cart  cart    @relation(fields: [cartId], references: [cartId])
+   
 
 }
 
@@ -76,17 +80,17 @@ model subCatagory {
   subatCagoryId Int @id @default(autoincrement())
   type String
   img String
+  CategoryId Int @default(1)
   Product product[]
-  catagory catagory[]
+  catogory catagory @relation(fields: [CategoryId], references: [CagoryId])
 }
 
 
 model catagory {
   CagoryId Int @id @default(autoincrement())
   type String
-  subatCagoryId Int
-  userId Int
-     users  users    @relation(fields: [userId], references: [userId])
-subCatagory subCatagory    @relation(fields: [ subatCagoryId], references: [ subatCagoryId])
+  userId Int @default(1)
+  users  users    @relation(fields: [userId], references: [userId])
+  subCategories subCatagory[]
 }
 

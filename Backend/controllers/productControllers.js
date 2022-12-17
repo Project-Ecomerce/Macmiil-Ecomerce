@@ -6,7 +6,12 @@ const prisma = new PrismaClient();
 
 const getAll = async (req,res) =>{
     try {
-        const product = await prisma.product.findMany();
+        const product = await prisma.product.findMany({
+            include: {
+                users : true,
+                subCatagory:true
+              }
+        });
         res.json({
             status : 'success',
             product
@@ -23,19 +28,41 @@ const getAll = async (req,res) =>{
 // create custumers
 const create = async (req,res) =>{
     try {
-        const {Name,Price,Store} = req.body;
-        const newProducts = await prisma.product.create({
-            data:{
-                Name,Price,Store 
+        const {title,Price,Store} = req.body;
+        const checkname = await prisma.product.findFirst({
+            where :  {
+                title
             }
         })
+
+        if(checkname) {
+            res.json({
+                status : "Error",
+                msg : "Name is already in use"
+            })
+            return
+        }
+
+        const newProducts = await prisma.product.create({
+            data:{
+                title,
+                Price,
+                Store ,
+                userId:req.userId,
+                
+        
+            }
+        })
+        
 
         res.json({
             newProducts
         })
     } catch (error) {
+        console.log(error)
         res.json({
-            error
+            error,
+           
         })
     }
 }
@@ -44,60 +71,84 @@ const create = async (req,res) =>{
 
 const getOne = async (req,res) =>{
     try {
-        const{ProductId} = req.params; 
-        const oneProducts = await prisma.products.findFirst({
+        const {ProductId} = req.params;
+
+        const product = await prisma.product.findFirst({
             where:{
                 ProductId: +ProductId
+                
             }
-        });
-
-        if(!oneProducts){
-            res.json({
-                status: 'Error',
-                message: 'The products you are looking for is not in the database',
-              });
-        }else{
-            res.json({
-                status: 'success',
-                oneProducts,
-              });
-        }
+            });
+            if (!product){
+                res.json({
+                    status: 'Error',
+                    message: 'The product you are looking for is not in the database',
+                  });
+            }else{
+                res.json({
+                    status: 'success',
+                    product,
+                  });
+            }
     } catch (error) {
         res.json({
-            error
-        })
+            error,
+          });
     }
-}
+ }
+
+// update product
+
+const update = async (req, res) => {
+    const {title,Price,Store} = req.body;
+  
+    try {
+        const{ProductId} = req.params;
+      const product = await prisma.product.update({
+        where: {
+            ProductId: parseInt(ProductId),
+        },
+        data: {
+            title,Price,Store
+        },
+      });
+  
+      res.json({
+        success: true,
+        product,
+      });
+    } catch (error) {
+        console.log(error)
+      res.json({
+        success: false,
+        error,
+      });
+    }
+  };
 
 
 //  delete
 const deleteproducts = async(req,res) =>{
-    try {
-        const{ProductId} = req.params; 
-        const oneProducts = await prisma.products.delete({
-            where:{
-                ProductId: parseInt(ProductId) 
-            }
-        });
-    
-         res.json({
-            status: 'success',
-            message: 'products deleted successfully!!!',
-            oneProducts,
-          })
-    
-        
-    } catch (error) {
-        res.json({
-            error
-        })
+    const {ProductId} = req.params;
+
+    const product = await prisma.product.delete({
+        where:{
+            ProductId: parseInt(ProductId),
+        }
+     });
+
+     res.json({
+        status: 'success',
+        message: 'product deleted successfully!',
+        product,
+      })
+
     }
-}
 
 module.exports ={
     getAll,
     create,
-    // update,
+    update,
     getOne,
     deleteproducts
 }
