@@ -21,12 +21,13 @@ const getAll = async (req,res) =>{
 
 // create
 const createCategory = async (req, res) => {
-    const { type, img } = req.body;
+    const { type, img,subId } = req.body;
     try {
       const category = await prisma.subCatagory.create({
         data: {
             type,
-            img
+            img,
+             CategoryId : subId
         },
       });
       res.json({

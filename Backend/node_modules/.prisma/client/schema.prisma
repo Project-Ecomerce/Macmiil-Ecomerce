@@ -38,17 +38,13 @@ model product {
   Price String
   image String?
   Store String
-  userId Int @default(1)
-  subatCagoryId Int @default(1)
+  userId Int
+  subatCagoryId Int
   users  users    @relation(fields: [userId], references: [userId])
   subCatagory  subCatagory   @relation(fields: [ subatCagoryId ], references: [ subatCagoryId])
   cart cart[]
   payment payment[]
 }
-
-
-
-
 
 
 model cart {
@@ -80,7 +76,7 @@ model subCatagory {
   subatCagoryId Int @id @default(autoincrement())
   type String
   img String
-  CategoryId Int @default(1)
+  CategoryId Int 
   Product product[]
   catogory catagory @relation(fields: [CategoryId], references: [CagoryId])
 }
@@ -89,7 +85,7 @@ model subCatagory {
 model catagory {
   CagoryId Int @id @default(autoincrement())
   type String
-  userId Int @default(1)
+  userId Int 
   users  users    @relation(fields: [userId], references: [userId])
   subCategories subCatagory[]
 }
