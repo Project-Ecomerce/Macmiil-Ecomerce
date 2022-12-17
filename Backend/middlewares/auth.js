@@ -17,14 +17,18 @@ const protect = (req, res, next) => {
         status: 'Error',
         message: 'You are not authenticated',
       });
-      return;
+      return
     }
+    return data;
 
     // BUILT IN USERID
-    return data;
-  });
+    // return data;
 
-  req.userId = decoded.userId;
+    
+  });
+  
+  req.userId = decoded.user
+  
 
   next();
 };
