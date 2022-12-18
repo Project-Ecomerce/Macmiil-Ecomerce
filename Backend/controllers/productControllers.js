@@ -110,7 +110,7 @@ const update = async (req, res) => {
             ProductId: parseInt(ProductId),
         },
         data: {
-            title,Price,Store
+            title,Price,Store,
         },
       });
   
