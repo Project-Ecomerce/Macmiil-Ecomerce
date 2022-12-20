@@ -13,8 +13,8 @@ router.post('/n',protect,product.create)
 // delete
 router.delete('/delete/:ProductId',product.deleteproducts)
 
-// delete
-router.patch('/update/:ProductId',product.update)
+// update
+router.patch('/update/:ProductId',protect,product.update)
 
 // get one 
 router.get('/getone/:ProductId',product.getOne)

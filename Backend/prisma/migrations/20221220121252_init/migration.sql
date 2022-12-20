@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "cart" ALTER COLUMN "qty" SET DEFAULT 1;
