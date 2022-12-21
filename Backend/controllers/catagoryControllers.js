@@ -4,24 +4,19 @@ const prisma = new PrismaClient
 // get all catagory
 
 const getAll = async (req,res) =>{
-    try {
-        const catagory= await prisma.catagory.findMany( {
-          include: {
-            catagory: true,
-          }
-        });
-        res.json({
-            status : 'success',
-            catagory
+  try {
+      const catagory= await prisma.catagory.findMany();
+      res.json({
+          status : 'success',
+          catagory
 
-        });
-    } catch (error) {
-
-        res.json({
-            status:'Error',
-            error,
-        })
-    }
+      });
+  } catch (error) {
+      res.json({
+          status:'Error',
+          error,
+      })
+  }
 }
 
 
@@ -32,7 +27,7 @@ const createCategory = async (req, res) => {
       const category = await prisma.catagory.create({
         data: {
             type,
-            userId:req.userId,
+            userId:req.user.userId,
             
             
         },

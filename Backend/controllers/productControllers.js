@@ -38,17 +38,28 @@ const create = async (req,res) =>{
         if(checkname) {
             res.json({
                 status : "Error",
-                msg : "Name is already in use"
+                msg : "title is already in use"
             })
             return
         }
+       
+        if(req.user.Role == "admin") {
+            res.json({
+                status : "Error",
+                message : "You are not allowed to do this task"
+              })
+              return;
+           }
+
+        
 
         const newProducts = await prisma.product.create({
             data:{
                 title,
                 Price,
                 Store ,
-                userId:req.userId,
+                // userId:req.checkUser.user,
+                userId:req.user.userId,
                 subatCagoryId : subId
                 
         
@@ -104,20 +115,24 @@ const update = async (req, res) => {
     const {title,Price,Store} = req.body;
   
     try {
-        const{ProductId} = req.params;
-      const product = await prisma.product.update({
-        where: {
-            ProductId: parseInt(ProductId),
-        },
-        data: {
-            title,Price,Store,
-        },
-      });
   
-      res.json({
-        success: true,
-        product,
-      });
+
+   const{ProductId} = req.params;
+   const product = await prisma.product.update({
+     where: {
+         ProductId: parseInt(ProductId),
+     },
+     data: {
+         title,Price,Store,
+         userId:req.user.userId,
+     },
+   });
+
+   res.json({
+     success: true,
+     product,
+   });
+
     } catch (error) {
         console.log(error)
       res.json({

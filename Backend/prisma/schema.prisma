@@ -49,9 +49,9 @@ model product {
 
 model cart {
   cartId Int @id @default(autoincrement())
-   qty Int @default(1)
+   qty Int 
   userId Int 
-   ProductId Int
+   ProductId Int 
    users  users    @relation(fields: [userId], references: [userId])
    product product    @relation(fields: [ProductId], references: [ProductId])
    payment payment[]
@@ -60,7 +60,7 @@ model cart {
 model payment {
    id Int @id @default(autoincrement())
    userId Int
-   createAt Int
+   createAt Int?
    is_paid Boolean  @default(false)
    is_deliveredn Boolean @default(false)
    ProductId Int

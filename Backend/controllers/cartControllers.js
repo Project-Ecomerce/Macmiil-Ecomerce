@@ -85,7 +85,13 @@ const prisma = new PrismaClient();
 
 const getcart = async (req,res) =>{
     try {
-        const users = await prisma.cart.findMany();
+        const users = await prisma.cart.findMany({
+            include: {
+                product: true,
+                users: true,
+
+              }
+        });
         res.json({
             status : 'success',
             users
@@ -99,7 +105,96 @@ const getcart = async (req,res) =>{
 }
 
 
+
+// create
+const createcart = async (req, res) => {
+   
+    try {
+      const {qty, subId} = req.body;
+
+      console.log(req.user)
+      const newcart = await prisma.cart.create({
+        data:{
+            qty,
+            userId:req.user.userId,
+            ProductId : subId
+            
+    
+        }
+    })
+      res.json({
+        success: true,
+        newcart,
+      });
+    } catch (error) {
+      console.log(error)
+      res.json({
+        success: false,
+        error,
+      });
+    }
+  };
+
+
+//   //   update 
+
+const updateCart = async (req, res) => {
+    const { qty } = req.body;
+  
+    try {
+        const{cartId} = req.params;
+      const cart = await prisma.cart.update({
+        where: {
+            cartId: parseInt(cartId),
+        },
+        data: {
+          qty,
+      
+         
+        },
+      });
+  
+      res.json({
+        success: true,
+        cart,
+      });
+    } catch (error) {
+      console.log(error)
+      res.json({
+        success: false,
+        error,
+      });
+    }
+  };
+
+
+     //  delete
+const deletecart = async(req,res) =>{
+    const{cartId} = req.params;
+
+    const cart = await prisma.cart.delete({
+        where:{
+            cartId: parseInt(cartId),
+        }
+     });
+
+     res.json({
+        status: 'success',
+        message: 'catagory deleted successfully!',
+        cart,
+      })
+
+    }
+
+
+
+
+
 module.exports ={
-    getcart
+    getcart,
+    createcart,
+    updateCart,
+        // getOne,
+    deletecart
 }
 

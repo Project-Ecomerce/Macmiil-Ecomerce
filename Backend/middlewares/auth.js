@@ -1,6 +1,10 @@
-const jwt = require('jsonwebtoken');
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
-const protect = (req, res, next) => {
+const jwt = require('jsonwebtoken');
+const { checkout } = require('../routes/productRouter');
+
+const protect =  async (req, res, next) => {
   const token = req.headers?.authorization?.split(' ')[1];
 
   if (!token) {
@@ -27,10 +31,37 @@ const protect = (req, res, next) => {
     
   });
   
-  req.userId = decoded.user
-  
+  const checkUser =  await prisma.users.findFirst({
+    where: {
+      userId:  decoded.user
+      
+     },
+  })
+  if(checkUser){
+   
+    req.user = checkUser
+    next();
+  } else {
+    res.json({
+      status : "Error",
+      message : "You are not allowed to do this task"
+    })
+  }
+ 
 
-  next();
+ 
 };
 
-module.exports = protect;
+// export const isAdmin = (req, res, next) => {
+//   if (req.user && req.user.isAdmin) {
+//     next();
+//   } else {
+//     res.json({
+//       errors: {
+//         msg: "Your are not allowed.",
+//       },
+//     });
+//   }
+// };
+
+module.exports =  protect;
