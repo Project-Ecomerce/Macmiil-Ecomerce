@@ -118,8 +118,6 @@ const createcart = async (req, res) => {
             qty,
             userId:req.user.userId,
             ProductId : subId
-            
-    
         }
     })
       res.json({

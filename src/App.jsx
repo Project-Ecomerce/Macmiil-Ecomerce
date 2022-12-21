@@ -10,11 +10,11 @@ function App() {
   
   return (
     <Router>
-      <Navbar />
+      <Navbar/>
       <Routes>
-        <Route path="/home" element=<Home /> />
-        <Route path="/products" element=<Products /> />
-        <Route path="/loging" element=<Login /> />
+        <Route path="/home" element =<Home /> />
+        <Route path="/products" element =<Products /> />
+        <Route path="/loging" element =<Login /> />
       </Routes>
     </Router>
   );
