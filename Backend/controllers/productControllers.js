@@ -58,11 +58,9 @@ const create = async (req,res) =>{
                 title,
                 Price,
                 Store ,
-                // userId:req.checkUser.user,
                 userId:req.user.userId,
                 subatCagoryId : subId
-                
-        
+
             }
         })
         

@@ -5,7 +5,11 @@ const prisma = new PrismaClient
 
 const getAll = async (req,res) =>{
     try {
-        const catagory= await prisma.subCatagory.findMany();
+        const catagory= await prisma.subCatagory.findMany({
+          include:{
+            catogory:true
+          }
+        });
         res.json({
             status : 'success',
             catagory

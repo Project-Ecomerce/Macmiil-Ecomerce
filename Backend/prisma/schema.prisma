@@ -50,7 +50,7 @@ model product {
 model cart {
   cartId Int @id @default(autoincrement())
    qty Int 
-  userId Int 
+   userId Int 
    ProductId Int 
    users  users    @relation(fields: [userId], references: [userId])
    product product    @relation(fields: [ProductId], references: [ProductId])

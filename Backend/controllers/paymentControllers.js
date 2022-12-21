@@ -28,13 +28,14 @@ const create = async (req, res) => {
         data:{
             
           userId:req.user.userId,
-            Product : subId,
+          ProductId : subId,
             cartId:car
 
             
     
         }
     })
+    console.log(newpayment)
       res.json({
         success: true,
         newpayment,
