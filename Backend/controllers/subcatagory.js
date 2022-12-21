@@ -73,27 +73,27 @@ const updateCategory = async (req, res) => {
   };
 
   //  delete
-// const deletecat = async(req,res) =>{
-//     const {subatCagoryId} = req.params;
+const deletecat = async(req,res) =>{
+    const {subatCagoryId} = req.params;
 
-//     const catagory = await prisma.subCatagory.delete({
-//         where:{
-//             subatCagoryId: parseInt(subatCagoryId),
-//         }
-//      });
+    const catagory = await prisma.subCatagory.delete({
+        where:{
+            subatCagoryId: parseInt(subatCagoryId),
+        }
+     });
 
-//      res.json({
-//         status: 'success',
-//         message: 'catagory deleted successfully!',
-//         catagory,
-//       })
+     res.json({
+        status: 'success',
+        message: 'catagory deleted successfully!',
+        catagory,
+      })
 
-//     }
+    }
 
     module.exports ={
         getAll,
         createCategory,
         updateCategory,
         // getOne,
-        // deletecat
+        deletecat
     }

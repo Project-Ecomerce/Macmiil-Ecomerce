@@ -38,12 +38,12 @@ const create = async (req,res) =>{
         if(checkname) {
             res.json({
                 status : "Error",
-                msg : "Name is already in use"
+                msg : "title is already in use"
             })
             return
         }
        
-        if(req.user.Role !== "admin") {
+        if(req.user.Role == "admin") {
             res.json({
                 status : "Error",
                 message : "You are not allowed to do this task"

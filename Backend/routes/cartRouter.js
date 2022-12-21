@@ -11,10 +11,10 @@ router.get('/all',Cart.getcart)
 router.post('/', protect, Cart.createcart)
 
 // delete
-// router.delete('/delete/:cartId',Cart.deletecart)
+router.delete('/delete/:cartId',Cart.deletecart)
 
 // update
-// router.patch('/update/:cartId',Cart.updateCart)
+router.patch('/update/:cartId',Cart.updateCart)
 
 // get one 
 // router.get('/getone/:subatCagoryId', subCatagory.getOne)

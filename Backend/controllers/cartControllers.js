@@ -138,53 +138,53 @@ const createcart = async (req, res) => {
 
 //   //   update 
 
-// const updateCart = async (req, res) => {
-//     const { qty } = req.body;
+const updateCart = async (req, res) => {
+    const { qty } = req.body;
   
-//     try {
-//         const{cartId} = req.params;
-//       const cart = await prisma.cart.update({
-//         where: {
-//             cartId: parseInt(cartId),
-//         },
-//         data: {
-//           qty,
+    try {
+        const{cartId} = req.params;
+      const cart = await prisma.cart.update({
+        where: {
+            cartId: parseInt(cartId),
+        },
+        data: {
+          qty,
       
          
-//         },
-//       });
+        },
+      });
   
-//       res.json({
-//         success: true,
-//         cart,
-//       });
-//     } catch (error) {
-//       console.log(error)
-//       res.json({
-//         success: false,
-//         error,
-//       });
-//     }
-//   };
+      res.json({
+        success: true,
+        cart,
+      });
+    } catch (error) {
+      console.log(error)
+      res.json({
+        success: false,
+        error,
+      });
+    }
+  };
 
 
-//      //  delete
-// const deletecart = async(req,res) =>{
-//     const{cartId} = req.params;
+     //  delete
+const deletecart = async(req,res) =>{
+    const{cartId} = req.params;
 
-//     const cart = await prisma.cart.delete({
-//         where:{
-//             cartId: parseInt(cartId),
-//         }
-//      });
+    const cart = await prisma.cart.delete({
+        where:{
+            cartId: parseInt(cartId),
+        }
+     });
 
-//      res.json({
-//         status: 'success',
-//         message: 'catagory deleted successfully!',
-//         cart,
-//       })
+     res.json({
+        status: 'success',
+        message: 'catagory deleted successfully!',
+        cart,
+      })
 
-//     }
+    }
 
 
 
@@ -193,8 +193,8 @@ const createcart = async (req, res) => {
 module.exports ={
     getcart,
     createcart,
-    // updateCart,
+    updateCart,
         // getOne,
-    // deletecart
+    deletecart
 }
 
