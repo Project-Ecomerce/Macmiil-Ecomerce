@@ -1,28 +1,23 @@
-
-import './App.css'
-import Navbar from './pages/Navbar'
-import User from './pages/User'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/auth/Login';
-
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Navbar from "./components/Navbar"
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+import Login from "./pages/auth/Login"
 
 function App() {
+  
   return (
-    <div className="App">
-    <Navbar/>
-    <User/>
-
     <Router>
-        <Routes>
-          {/* <Route path='/' element={<Home />} />
-          <Route path='/register' element={<SignUp />} /> */}
-          <Route path='/login' element={<Login />} />
-        </Routes>
-      </Router>
-    </div>
-
-    
-  )
+      <Navbar/>
+      <Routes>
+      <Route path="/home" element ={<Home />} />
+        <Route path="/products" element ={<Products />} />
+        <Route path="/loging" element = {<Login />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

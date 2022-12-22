@@ -120,11 +120,13 @@
     display: flex;
     justify-content: space-between;
 }
-.links a{
-    margin: 10px 0;
+.links a , .loginBtn{
+    margin: 10px 5px;
     font-size: 0.75em;
-    color: #8f8f8f;
+    color: #757272;
 }
+
+
 
 
 
