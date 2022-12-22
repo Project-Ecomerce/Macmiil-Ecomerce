@@ -30,9 +30,6 @@ const create = async (req, res) => {
           userId:req.user.userId,
           ProductId : subId,
             cartId:car
-
-            
-    
         }
     })
     console.log(newpayment)
