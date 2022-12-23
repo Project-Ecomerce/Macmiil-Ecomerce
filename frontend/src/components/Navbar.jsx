@@ -188,7 +188,7 @@ const Navbar = () => {
                   logout
                 </Link>
                 <Link
-                  to="/dashboard"
+                  to="/"
                   className="hover:bg-gray-200 py-4 px-6   flex gap-2 font-bold text-lg"
                 >
                   {" "}

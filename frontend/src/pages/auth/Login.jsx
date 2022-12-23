@@ -20,7 +20,7 @@ const Login = () => {
     if (user.state === 'Success') {
       redirect('/');
     }
-  }, [isLoading,isError])
+  }, [user])
 
 
   const dispatch = useDispatch();
@@ -38,6 +38,7 @@ const Login = () => {
       Password,
     };
     console.log(data);
+    
     dispatch(logout(data));
   }
   return (

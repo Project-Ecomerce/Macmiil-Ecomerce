@@ -14,43 +14,53 @@ function Sidebar() {
            <img className='w-5' src="icons8_menu_500px_2.png" alt="" />
             </div>
             <menu className='mt-12'>
-             <Link to={"/Dashboard"}> <div className="div flex items-center gap-5 p-3 hover:bg-green-400 ">
+             <Link to ='/Dashboard'> <div className="div flex items-center gap-5 p-3 hover:bg-green-400 ">
                <FaHome className='text-green-800'/>
                 <h1>Dashboard</h1>
                </div></Link>
 
-               <div className="div flex items-center gap-5  p-3 cursor-pointer hover:bg-green-400 ">
+              <Link to='/Dashboard/Products'>
+              <div className="div flex items-center gap-5  p-3 cursor-pointer hover:bg-green-400 ">
                <MdOutlineProductionQuantityLimits/>
                 <h1>Products</h1>
                </div>
+              </Link>
 
-               <div className="div flex items-center gap-5 p-3 hover:bg-green-400  ">
+              <Link to='/Dashboard/AddProducts'>
+              <div className="div flex items-center gap-5 p-3 hover:bg-green-400  ">
                <MdOutlineLibraryAdd/>
                 <h1>Add Products</h1>
                </div>
+              </Link>
 
 
+               <Link to='/Dashboard/Users'>
                <div className="div flex items-center gap-5 p-3 hover:bg-green-400  transition-all  ">
                <HiUsers/>
                 <h1>Users</h1>
                </div>
+               </Link>
               
+               <Link to='/Dashboard/Catogary'>
                <div className="div flex items-center gap-5 p-3 hover:bg-green-400 transition-all  ">
                <HiUsers/>
-                <h1>Sub Catogary</h1>
+                <h1> Catogary</h1>
                </div>
+               </Link>
 
-               <div className="div flex items-center gap-5 p-3 hover:bg-green-400 transition-all   ">
+             <Link to='/Dashboard/SubCatogary'>
+             <div className="div flex items-center gap-5 p-3 hover:bg-green-400 transition-all   ">
                <HiUsers/>
                 <h1>Sub Catogary</h1>
                </div>
+             </Link>
 
-               <div className="div flex items-center gap-5 p-3 hover:bg-green-400 transition-all   ">
+               {/* <div className="div flex items-center gap-5 p-3 hover:bg-green-400 transition-all   ">
                <MdOutlineLibraryAdd/>
                 <h1>Add Products</h1>
-               </div>
+               </div> */}
 
-               <div className="div flex items-center gap-5 p-3 hover:bg-green-400 transition-all  ">
+               {/* <div className="div flex items-center gap-5 p-3 hover:bg-green-400 transition-all  ">
                <MdOutlineLibraryAdd/>
                 <h1>Add Products</h1>
                </div>
@@ -58,7 +68,7 @@ function Sidebar() {
                <div className="div flex items-center gap-5 p-3 hover:bg-green-400 transition-all  ">
                <FaHome/>
                 <h1>Dashboard</h1>
-               </div>
+               </div> */}
 
             </menu>
             </div>  
