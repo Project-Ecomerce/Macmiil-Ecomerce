@@ -17,6 +17,6 @@ router.delete('/delete/:cartId',Cart.deletecart)
 router.patch('/update/:cartId',Cart.updateCart)
 
 // get one 
-// router.get('/getone/:subatCagoryId', subCatagory.getOne)
+router.get('/getone/:cartId', Cart.getOne)
 
 module.exports = router;

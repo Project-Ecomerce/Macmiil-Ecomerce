@@ -1,8 +1,8 @@
-import React,{useState,useEffect}from 'react'
+import React,{useState,}from 'react'
 import styles from "./login.module.css"
-import { logout } from '../../../rudex/slices/auth';
-import { Link ,useNavigate} from 'react-router-dom';
-import {  useDispatch,useSelector } from 'react-redux';
+// import { logout } from '../../../rudex/slices/auth';
+import { Link } from 'react-router-dom';
+// import {  useDispatch,useSelector } from 'react-redux';
 
 
 const Login = () => {
@@ -10,20 +10,20 @@ const Login = () => {
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
 
-  const {isLoading, isError, errorMessage, user} = useSelector(
-    (state) => state.user
-  );
+  // const {isLoading, isError, errorMessage, user} = useSelector(
+  //   (state) => state.user
+  // );
 
-  const redirect = useNavigate();
+  // const redirect = useNavigate();
 
-  useEffect( () => {
-    if (user.state === 'Success') {
-      redirect('/');
-    }
-  }, [user])
+  // useEffect( () => {
+  //   if (user.state === 'Success') {
+  //     redirect('/');
+  //   }
+  // }, [user])
 
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const loginHandler = (e) => {
     e.preventDefault();
@@ -39,14 +39,14 @@ const Login = () => {
     };
     console.log(data);
     
-    dispatch(logout(data));
+    // dispatch(logout(data));
   }
   return (
     <div className={styles.bod}>
       <div className={styles.box}>
         <div className={styles.form}>
           <h2>sign in</h2>
-          <p className='my-3 text-red-500'>{ isError ? errorMessage : '' }</p>
+          {/* <p className='my-3 text-red-500'>{ isError ? errorMessage : '' }</p> */}
 
           <form onSubmit={loginHandler} >
           <div className={styles.inputbox}>
@@ -74,8 +74,9 @@ const Login = () => {
           <div className={styles.links}>
            <a href='#'>forget password</a>           
          <button className={styles.loginBtn}>
+          login
           
-         {isLoading ? 'Loading...' : 'Login'}
+         {/* {isLoading ? 'Loading...' : 'Login'} */}
          </button>
           </div>
           <div className={styles.account}>
@@ -87,37 +88,8 @@ const Login = () => {
       </div>
     </div>
 
-    //   <div className={styles.container } >
-    //   <div className={styles.title}>Login</div>
-    //   {/* <p>{loginError ? loginErrMsg : ''}</p> */}
-    //   <form onSubmit={loginHandler}>
-    //     <div className={styles.inputGroup}>
-    //       <input
-    //         type='text'
-    //         placeholder='Enter your email address'
-    //         value={Email}
-    //         onChange={(e) => setEmail(e.target.value)}
-    //       />
-    //     </div>
-    //     <div className={styles.inputGroup}>
-    //       <input
-    //         type='password'
-    //         placeholder='Password'
-    //         value={Password}
-    //         onChange={(e) => setPassword(e.target.value)}
-    //       />
-    //     </div>
-    //     <div className={styles.inputGroup}>
-    //       <button className={styles.loginBtn}>
-    //         {/* {loginLoading ? 'Loading...' : 'Login'} */}
-    //       </button>
-    //     </div>
-    //   </form>
-
-    //   <div className={styles.account}>
-    //     <Link to='/register'>Need a new account ?</Link>
-    //   </div>
-    // </div>
+   
+ 
   
   );
 }

@@ -5,16 +5,16 @@ const protect = require('../middlewares/auth');
 
 // get all
 
-router.get('/all',protect, payment.getAll)
+router.get('/all', payment.getAll)
 
 // create 
-router.post('/',payment.create)
+router.post('/',protect,payment.create)
 
 // // delete
 // router.delete('/delete/:paymentId',payment.deletepayment)
 
 // // update
-// router.patch('/update/:paymentId',payment.updatepayment)
+router.patch('/update/:id',protect,payment.update)
 
 // get one 
 // router.get('/getone/:subatCagoryId', subCatagory.getOne)

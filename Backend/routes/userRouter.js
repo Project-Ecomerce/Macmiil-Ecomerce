@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const user = require ('../controllers/usersControllers')
-
+const protect = require('../middlewares/auth');
 // get all
 
 router.get('/all',user.getAll)
@@ -20,7 +20,7 @@ router.delete('/delete/:userId', user.deleteuser)
 router.put('/update/:userId', user.update)
 
 // update role
-router.put('/role/:userId', user.updateRole)
+router.put('/role/:userId',protect, user.updateRole)
 // register
 router.post('/new', user.registerUser);
 // login

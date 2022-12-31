@@ -213,7 +213,7 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      <section className="mt-20 p"></section>
+      {/* <section className="mt-20 p"></section> */}
     </div>
   );
 }

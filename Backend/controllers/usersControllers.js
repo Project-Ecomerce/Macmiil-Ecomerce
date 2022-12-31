@@ -159,9 +159,18 @@ const deleteuser = async(req,res) =>{
 const updateRole = async (req, res) => {
     try {
       const { Role, userId } = req.body;
+
+      if(req.user.Role === "ADMIN" && "SUPERADMIN") {
+        res.json({
+            status : "Error",
+            message : "You are not allowed to do this task"
+          })
+          return;
+       } 
   
       if (!Role) {
         res.json({
+          
           status: 'Error',
           message: 'Please add the role',
         });
@@ -179,27 +188,26 @@ const updateRole = async (req, res) => {
   
       res.json(updatedUser);
     } catch (error) {
+      console.log(error)
       res.json(error);
     }
   };
 
 
+// registerUser
 
   const registerUser = async (req, res, next) => {
-    // recieve data from the request
+   try {
     const { FirstName, LastName, Email,Password} =  req.body;
-  
     if (!Email || !Password || !FirstName || !LastName) {
       res.json({
         status: 'Error',
         message: 'Email or password was not provided',
       });
-  
       return;
     }
 
     const salt = bcrypt.genSaltSync(10);
-
     const hashedPassword = bcrypt.hashSync(Password, salt);
     const newUser = await prisma.users.create({
       data: {
@@ -207,19 +215,23 @@ const updateRole = async (req, res) => {
          Password: hashedPassword,
         FirstName,
         LastName,
+        Role: Email === "muhaabdi71@gmail.com" ? "SUPERADMIN" :"USER"
+      
       },
     });
-  
-    res.json({
-      newUser,
-    });
-
     const token = generateToken(newUser.userId);
     res.json({
-      user: { ...newUser },
+      user:{...newUser}  ,
       token,
       status: 'Success',
     });
+   } catch (error) {
+    console.log(error)
+    res.status(403).json({
+      status: 'ERROR',
+      message: error,
+    });
+   }
   };
 
 
@@ -228,52 +240,44 @@ const updateRole = async (req, res) => {
 
 const login = async (req, res) => {
   const { Email, Password } = req.body;
+   try {
+    if (!Email || !Password ) {
+      res.json({
+        status: 'Error',
+        message: 'Email or password was not provided',
+      });
+      return;
+    }
+    const userExisting = await prisma.users.findFirst({
+      where: {
+       Email,
+      },
+    });
   
-  if (!Email || !Password ) {
-    res.json({
-      status: 'Error',
-      message: 'Email or password was not provided',
-    });
-
-    return;
-  }
-
-  const userExisting = await prisma.users.findFirst({
-    where: {
-     Email,
-    },
-  });
-
-  if (!userExisting) {
-    
-    res.json({
-      status: 'Error',
-      message: 'Wrong credentials',
-    });
-    return;
-  }
-
-  const dehashedPass = bcrypt.compareSync(Password, userExisting.Password);
-
-  if (dehashedPass) {
-    const token = generateToken(userExisting.userId);
-    res.json({
-      status: 'Success',
-      user : userExisting,
-      message: 'You are logged in',
-      token
-    });
-  } else {
+    if (!userExisting) {
+      res.json({
+        status: 'Error',
+        message: 'Wrong credentials',
+      });
+      return;
+    }
+    const dehashedPass = bcrypt.compareSync(Password, userExisting.Password);
+    if (dehashedPass) {
+      const token = generateToken(userExisting.userId);
+      res.json({
+        status: 'Success',
+        user : userExisting,
+        message: 'You are logged in',
+        token
+      });
+    } 
+   } catch (error) {
     res.json({
       status: 'Error',
       message: 'Wrong credentials',
     });
-  }
-};
-
-
-
-
+   }
+}
 
 
     module.exports ={

@@ -52,16 +52,6 @@ const protect =  async (req, res, next) => {
  
 };
 
-// export const isAdmin = (req, res, next) => {
-//   if (req.user && req.user.isAdmin) {
-//     next();
-//   } else {
-//     res.json({
-//       errors: {
-//         msg: "Your are not allowed.",
-//       },
-//     });
-//   }
-// };
+
 
 module.exports =  protect;

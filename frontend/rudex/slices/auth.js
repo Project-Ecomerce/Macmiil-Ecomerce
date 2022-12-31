@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const user = JSON.parse(localStorage.getItem('userData'))
 const initialState = {
-    user: user ? user: {},
+    user:  {},
     isLoading: false,
     isError: false,
     errorMessage: '',
@@ -15,16 +15,16 @@ const initialState = {
 
   export const login = createAsyncThunk('auth/login', async (data,{rejectWithValue})=>{
     try {
-        const {datas} = await axios.post('http://localhost:5000/api/user/login',{
-            Password:datas.Password,
-            Email: datas.Email
+        const {datas} = await axios.post('http://localhost:6000/api/user/login',{
+            Password:data.Password,
+            Email: data.Email
         });
-        if (data?.status === 'ERROR') {
+        if (datas?.status === 'ERROR') {
             return rejectWithValue(data.errorMessage || 'something went wrong')
         }
 
         localStorage.setItem('userData',JSON.stringify(data));
-        console.log(data)
+        console.log(datas)
     } catch (error) {
         return rejectWithValue(error)
     }

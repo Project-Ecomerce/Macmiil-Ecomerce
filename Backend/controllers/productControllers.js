@@ -43,7 +43,7 @@ const create = async (req,res) =>{
             return
         }
        
-        if(req.user.Role == "admin") {
+        if(req.user.Role !== "ADMIN") {
             res.json({
                 status : "Error",
                 message : "You are not allowed to do this task"
@@ -114,6 +114,14 @@ const update = async (req, res) => {
   
     try {
   
+
+        if(req.user.Role !== "ADMIN") {
+            res.json({
+                status : "Error",
+                message : "You are not allowed to do this task"
+              })
+              return;
+           } 
 
    const{ProductId} = req.params;
    const product = await prisma.product.update({

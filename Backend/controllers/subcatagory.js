@@ -24,16 +24,68 @@ const getAll = async (req,res) =>{
 }
 
 // create
-const createCategory = async (req, res) => {
-    const { type, img,subId } = req.body;
+const createSubCategory = async (req, res) => {
+  const { type, img,subId } = req.body;
+  try {
+    if(req.user.Role !== "ADMIN") {
+      res.json({
+          status : "Error",
+          message : "You are not allowed to do this task"
+        })
+        return;
+     }
+        
+
+    const subCategory = await prisma.subCatagory.create({
+      data: {
+          type,
+          img,
+          CategoryId:subId,
+          userId:req.user.userId,
+          
+          
+      } 
+    });
+    res.json({
+      success: true,
+      subCategory,
+    });
+  } catch (error) {
+    console.log(error)
+    res.json({
+      success: false,
+      error,
+    });
+  }
+};
+
+
+//   update 
+
+const updateSubCategory = async (req, res) => {
+    const { type, img, } = req.body;
+  
     try {
-      const category = await prisma.subCatagory.create({
+      if(req.user.Role !== "ADMIN") {
+        res.json({
+            status : "Error",
+            message : "You are not allowed to do this task"
+          })
+          return;
+       }
+       
+        const{subatCagoryId} = req.params;
+      const category = await prisma.subCatagory.update({
+        where: {
+            subatCagoryId: Number(subatCagoryId),
+        },
         data: {
-            type,
-            img,
-             CategoryId : subId
+          type,
+          img,
+          userId:req.user.userId,
         },
       });
+  
       res.json({
         success: true,
         category,
@@ -47,57 +99,36 @@ const createCategory = async (req, res) => {
     }
   };
 
-//   update 
-
-const updateCategory = async (req, res) => {
-    const { type, img, } = req.body;
-  
-    try {
-        const{subatCagoryId} = req.params;
-      const category = await prisma.subCatagory.update({
-        where: {
-            subatCagoryId: Number(subatCagoryId),
-        },
-        data: {
-          type,
-          img,
-        },
-      });
-  
-      res.json({
-        success: true,
-        category,
-      });
-    } catch (error) {
-      res.json({
-        success: false,
-        error,
-      });
-    }
-  };
-
   //  delete
-const deletecat = async(req,res) =>{
+const deleteSubcat = async(req,res) =>{
     const {subatCagoryId} = req.params;
+try {
+  
+  const catagory = await prisma.subCatagory.delete({
+    where:{
+        subatCagoryId: parseInt(subatCagoryId),
+    },
+ });
 
-    const catagory = await prisma.subCatagory.delete({
-        where:{
-            subatCagoryId: parseInt(subatCagoryId),
-        }
-     });
-
-     res.json({
-        status: 'success',
-        message: 'catagory deleted successfully!',
-        catagory,
-      })
+ res.json({
+    status: 'success',
+    message: 'catagory deleted successfully!',
+    catagory,
+  })
+} catch (error) {
+  console.log(error)
+  res.json({
+    success: false,
+    error,
+  });
+}
 
     }
 
     module.exports ={
         getAll,
-        createCategory,
-        updateCategory,
+        createSubCategory,
+        updateSubCategory,
         // getOne,
-        deletecat
+        deleteSubcat
     }
