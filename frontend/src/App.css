@@ -12,7 +12,6 @@
 
 /* From https://css.glass */
 /* From https://css.glass */
-background: rgba(98, 255, 182, 0.73);
 
 
 backdrop-filter: blur(5px);
@@ -27,4 +26,9 @@ body{
 h1{
 
     font-family: 'Manrope', sans-serif;
+}
+input{
+
+    font-family: 'Manrope', sans-serif;
+
 }
