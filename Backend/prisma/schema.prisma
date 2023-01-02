@@ -29,6 +29,7 @@ model users {
   cart cart[]
  payment payment[]
  catagory catagory[]
+ subCatagory subCatagory[]   
 }
 
 model product {
@@ -41,7 +42,7 @@ model product {
   userId Int
   subatCagoryId Int
   users  users    @relation(fields: [userId], references: [userId])
-  subCatagory  subCatagory   @relation(fields: [ subatCagoryId ], references: [ subatCagoryId])
+  subCatagory  subCatagory   @relation(fields: [ subatCagoryId ], references: [ subatCagoryId] , onDelete: Cascade)
   cart cart[]
   payment payment[]
 }
@@ -52,8 +53,8 @@ model cart {
    qty Int 
    userId Int 
    ProductId Int 
-   users  users    @relation(fields: [userId], references: [userId])
-   product product    @relation(fields: [ProductId], references: [ProductId])
+   users  users    @relation(fields: [userId], references: [userId], onDelete: Cascade)
+   product product    @relation(fields: [ProductId], references: [ProductId], onDelete: Cascade)
    payment payment[]
 }
 
@@ -64,8 +65,9 @@ model payment {
    is_paid Boolean  @default(false)
    is_deliveredn Boolean @default(false)
    ProductId Int
+  //  prds String[]
    cartId Int
-   product product    @relation(fields: [ProductId], references: [ProductId])
+   product product    @relation(fields: [ProductId], references: [ProductId],onDelete: Cascade)
    users  users    @relation(fields: [userId], references: [userId])
    cart  cart    @relation(fields: [cartId], references: [cartId])
    
@@ -78,7 +80,9 @@ model subCatagory {
   img String
   CategoryId Int 
   Product product[]
-  catogory catagory @relation(fields: [CategoryId], references: [CagoryId])
+  catogory catagory @relation(fields: [CategoryId], references: [CagoryId],onDelete: Cascade)
+   userId Int 
+  user  users    @relation(fields: [userId], references: [userId])
 }
 
 
@@ -87,6 +91,6 @@ model catagory {
   type String
   userId Int 
   users  users    @relation(fields: [userId], references: [userId])
-  subCategories subCatagory[]
+  subCategorie subCatagory[]
 }
 

@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "cart" ALTER COLUMN "cartId" SET DEFAULT 1,
+ALTER COLUMN "cartId" DROP DEFAULT;
+DROP SEQUENCE "cart_cartId_seq";

@@ -24,6 +24,31 @@ const getAll = async (req,res) =>{
 const createCategory = async (req, res) => {
     const { type } = req.body;
     try {
+   
+      const checktypes = await prisma.catagory.findFirst({
+        where :  {
+          type,
+        }
+    })
+
+    if(checktypes) {
+        res.json({
+            status : "Error",
+            msg : "typesb is already in use"
+        })
+        return
+    }
+
+      
+
+      if(req.user.Role === "ADMIN " ) {
+        res.json({
+            status : "Error",
+            message : "You are not allowed to do this task"
+          })
+          return;
+       }
+
       const category = await prisma.catagory.create({
         data: {
             type,
@@ -31,6 +56,8 @@ const createCategory = async (req, res) => {
             
             
         },
+
+        
       });
       res.json({
         success: true,
@@ -51,6 +78,14 @@ const updateCategory = async (req, res) => {
     const { type,  } = req.body;
   
     try {
+      if(req.user.Role !== "ADMIN") {
+        res.json({
+            status : "Error",
+            message : "You are not allowed to do this task"
+          })
+          return;
+       }
+
         const{CagoryId} = req.params;
       const category = await prisma.catagory.update({
         where: {
@@ -58,7 +93,7 @@ const updateCategory = async (req, res) => {
         },
         data: {
           type,
-      
+       userId:req.user.userId,
          
         },
       });

@@ -1,3 +1,0 @@
--- AlterTable
-ALTER TABLE "product" ALTER COLUMN "userId" DROP DEFAULT,
-ALTER COLUMN "subatCagoryId" DROP DEFAULT;

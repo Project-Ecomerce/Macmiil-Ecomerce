@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE "cart" ALTER COLUMN "qty" DROP DEFAULT;

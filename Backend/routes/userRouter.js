@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const user = require ('../controllers/usersControllers')
-
+const protect = require('../middlewares/auth');
 // get all
 
 router.get('/all',user.getAll)
@@ -13,14 +13,14 @@ router.post('/',user.create)
 router.get('/getone/:userId', user.getOne)
 
 // delete
-router.delete('/delete/:userId', user.deleteuser)
+router.delete('/delete/:userId',protect, user.deleteuser)
 
 
 // update
 router.put('/update/:userId', user.update)
 
 // update role
-router.put('/role/:userId', user.updateRole)
+router.put('/role/:userId',protect, user.updateRole)
 // register
 router.post('/new', user.registerUser);
 // login
