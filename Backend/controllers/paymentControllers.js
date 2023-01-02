@@ -57,7 +57,7 @@ const create = async (req, res) => {
   //  update user
 
  const update = async (req, res) => {
-  const { is_paid, is_deliveredn} =  req.body;
+
 
   try {
       const{id} = req.params;
@@ -66,18 +66,18 @@ const create = async (req, res) => {
         id: +id,
       },
       data: {
-        is_deliveredn,is_paid,userId:req.user.userId
+        is_deliveredn : true,
+        is_paid : true
       },
     });
 
     res.json({
-      success: true,
+    
       user,
     });
   } catch (error) {
       console.log(error)
     res.json({
-      success: false,
       error,
     });
   }

@@ -153,6 +153,15 @@ const update = async (req, res) => {
 const deleteproducts = async(req,res) =>{
     const {ProductId} = req.params;
 
+try {
+    if(req.user.Role !== "ADMIN") {
+        res.json({
+            status : "Error",
+            message : "You are not allowed to do this task"
+          })
+          return;
+       } 
+
     const product = await prisma.product.delete({
         where:{
             ProductId: parseInt(ProductId),
@@ -164,6 +173,12 @@ const deleteproducts = async(req,res) =>{
         message: 'product deleted successfully!',
         product,
       })
+} catch (error) {
+    res.json({
+        success: false,
+        message:"data does not exist",
+      });
+}
 
     }
 

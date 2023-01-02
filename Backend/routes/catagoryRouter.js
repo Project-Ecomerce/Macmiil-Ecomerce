@@ -11,7 +11,7 @@ router.get('/all',Catagory.getAll)
 router.post('/',protect,Catagory.createCategory)
 
 // delete
-router.delete('/delete/:CagoryId',Catagory.deletecat)
+router.delete('/delete/:CagoryId',protect,Catagory.deletecat)
 
 // delete
 router.patch('/update/:CagoryId',protect,Catagory.updateCategory)

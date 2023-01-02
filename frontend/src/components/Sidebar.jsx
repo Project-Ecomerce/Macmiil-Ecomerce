@@ -64,7 +64,6 @@ function Sidebar() {
                <MdOutlineLibraryAdd/>
                 <h1>Add Products</h1>
                </div>
-
                <div className="div flex items-center gap-5 p-3 hover:bg-green-400 transition-all  ">
                <FaHome/>
                 <h1>Dashboard</h1>

@@ -13,7 +13,7 @@ router.post('/',user.create)
 router.get('/getone/:userId', user.getOne)
 
 // delete
-router.delete('/delete/:userId', user.deleteuser)
+router.delete('/delete/:userId',protect, user.deleteuser)
 
 
 // update

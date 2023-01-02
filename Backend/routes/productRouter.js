@@ -11,7 +11,7 @@ router.get('/all',product.getAll)
 router.post('/n',protect,product.create)
 
 // delete
-router.delete('/delete/:ProductId',product.deleteproducts)
+router.delete('/delete/:ProductId',protect, product.deleteproducts)
 
 // update
 router.patch('/update/:ProductId',protect,product.update)

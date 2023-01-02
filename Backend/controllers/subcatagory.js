@@ -104,6 +104,16 @@ const deleteSubcat = async(req,res) =>{
     const {subatCagoryId} = req.params;
 try {
   
+  
+    if(req.user.Role !== "ADMIN") {
+      res.json({
+          status : "Error",
+          message : "You are not allowed to do this task"
+        })
+        return;
+     }
+
+
   const catagory = await prisma.subCatagory.delete({
     where:{
         subatCagoryId: parseInt(subatCagoryId),
@@ -119,7 +129,7 @@ try {
   console.log(error)
   res.json({
     success: false,
-    error,
+    message:"data does not exist",
   });
 }
 
