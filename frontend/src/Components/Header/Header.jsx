@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import style from './Header.css'
+import { Link } from 'react-router-dom'
 
 function header() {
 	const navRef = useRef();
@@ -17,6 +18,16 @@ function header() {
 				<a href="/#">My work</a>
 				<a href="/#">Blog</a>
 				<a href="/#">About me</a>
+
+				<button>
+				<a href="/#">login</a>
+				</button>
+
+				<Link to='/Dashboard'>
+				<button>
+				<a href="/#">Dashboard</a>
+				</button>
+				</Link>
 
 				
 				<button
