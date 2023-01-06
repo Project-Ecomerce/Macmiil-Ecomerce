@@ -20,7 +20,7 @@ function header() {
 				<a href="/#">About me</a>
 
 				<button>
-				<a href="/#">login</a>
+				<Link to='/Login'>login</Link>
 				</button>
 
 				<Link to='/Dashboard'>

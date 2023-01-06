@@ -1,24 +1,18 @@
 import React from 'react'
-// import GoogleLogin from 'react-google-login'
-import { ReactDOM } from 'react'
-import Styles from './Login.module.css'
-const Login = () => {
-    const responseGoogle = (response) => {
-        console.log(response);
-      }
+import './Login.css'
+function Login() {
   return (
-    <div className={Styles.Container}>
-        (
-  <GoogleLogin className={Styles.Google}
-    clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
-    buttonText="Login"
-    onSuccess={responseGoogle}
-    onFailure={responseGoogle}
-    cookiePolicy={'single_host_origin'}
-  />
-  
-);
+    <div class="login">
+    <div>
+        <p class="title">Log In</p>
+        <input placeholder="Email" required />
+        <input placeholder="Password" type="password" required />
+        <button class="loader">Sign in</button>
+        <a href="#">Forgot your password?</a>
+        <p class="text">Don't have an account?</p>
+        <button class="buttonShadow">Create new account</button>
     </div>
+</div>
   )
 }
 

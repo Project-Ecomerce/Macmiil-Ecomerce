@@ -4,13 +4,14 @@ import Header from './Components/Header/Header'
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
 import Home from './pages/Home/Home'
-import Login from './pages/Login/Login'
+
 import Dashboard from './pages/Dashboard/Dashboard'
 import Users from './pages/Dashboard/Users'
 import Catogary from './pages/Dashboard/Catogary'
 import SubCatogary from './pages/Dashboard/SubCatogary'
 import AddProducts from './pages/Dashboard/AddProducts'
 import Sidebar from './pages/Dashboard/Sidebar'
+import Login from './pages/Login/Login'
 
 function App() {
   
