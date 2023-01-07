@@ -2,40 +2,36 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {  useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { newCostumer } from '../../../../rudex/slices/CostumerSlice';
+import { newProduct } from '../../../../rudex/slices/product/productSlice';
 
 const Createcostumers = () => {
-    const [costumerAddress, setcostumerAddress] = useState('');
-    const [costumerPhone, setcostumerPhone] = useState('');
-    const [costumerEmail, setcostumerEmail] = useState('');
-    const [costumerId, setcostumerId] = useState('');
-    const [Name, setName] = useState('');
-    const {newCostumerLoading,newCostumerSuccess } = useSelector(
-        (state) => state.Costumer
+    const [title, settitle] = useState('');
+    const [Price, setPrice] = useState('');
+    const [Store, setStore] = useState('');
+    const [subId, setsubId] = useState('');
+    const [image, setimage] = useState('');
+    const {newProductLoading,newProductSuccess } = useSelector(
+        (state) => state.product
       );
 
       const dispatch = useDispatch();
       const navigate = useNavigate();
 
       useEffect(() => {
-        if (newCostumerSuccess) {
-          navigate('/');
-          dispatch(reset());
+        if (newProductSuccess) {
+          navigate('/Dashboard/products');
+          // dispatch(reset());
         }
-      }, [newCostumerSuccess]);
+      }, [newProductSuccess]);
 
       const handleSubmit = (e) => {
         e.preventDefault();
      const data = {
-      costumerAddress,
-      costumerPhone,
-      costumerEmail,
-      Name,
-      costumerId
+      title,Price,Store,subId,image
       
         };
     
-        dispatch(newCostumer(data));
+        dispatch(newProduct(data));
       };
   return (
 <>
@@ -51,12 +47,12 @@ const Createcostumers = () => {
       <div className='flex gap-[5rem] ml-7'>
       <div className>
           <div >
-            <label htmlFor='Name'>Name</label>
+            <label htmlFor='Name'>title</label>
           </div>
           <div>
             <input
-              value={Name}
-              onChange={(e) => setName(e.target.value)}
+              value={title}
+              onChange={(e) => settitle(e.target.value)}
               type='text'
               className='px-2 py-2 rounded-[5px] w-[100%] '
               placeholder=''
@@ -68,16 +64,16 @@ const Createcostumers = () => {
 
         <div className>
           <div >
-            <label htmlFor='title'>Phone</label>
+            <label htmlFor='title'>Price</label>
           </div>
           <div>
             <input
-              value={costumerPhone}
-              onChange={(e) => setcostumerPhone(e.target.value)}
+              value={Price}
+              onChange={(e) => setPrice(e.target.value)}
               type='text'
               className='px-2 py-2 rounded-[5px]'
               placeholder='063'
-              id='title'
+              id='Price'
               required
             />
           </div>
@@ -86,16 +82,16 @@ const Createcostumers = () => {
 
        <div className='ml-7'>
           <div >
-            <label htmlFor='Email'>Email</label>
+            <label htmlFor='Store'>Store</label>
           </div>
           <div>
             <input
-              value={costumerEmail}
-              onChange={(e) => setcostumerEmail(e.target.value)}
+              value={Store}
+              onChange={(e) => setStore(e.target.value)}
               type='text'
               className='px-2 py-2 rounded-[5px] w-[70%] '
-              placeholder='email'
-              id='Email'
+              placeholder='Store'
+              id='Store'
               required
             />
           </div>
@@ -103,16 +99,14 @@ const Createcostumers = () => {
 
         <div className='ml-7'>
           <div>
-            <label htmlFor='body'>Post Body</label>
+            <label htmlFor='body'>subId</label>
           </div>
           <div>
             <textarea
-              value={costumerAddress}
-              onChange={(e) => setcostumerAddress(e.target.value)}
+              value={subId}
+              onChange={(e) => setsubId(e.target.value)}
               className='px-2 py-2 rounded-[5px]'
               placeholder='Post Body'
-              cols='44'
-              rows='10'
               id='body'
               required
             ></textarea>
@@ -122,7 +116,7 @@ const Createcostumers = () => {
        
         <div>
           <button className='bg-slate-600 hover:bg-slate-400 text-white font-bold py-2 px-4 rounded mt-3 ml-7'>
-          {newCostumerLoading ? (loading) : 'create'}
+          {newProductLoading ? (loading) : 'create'}
           </button>
         </div>
        </div>

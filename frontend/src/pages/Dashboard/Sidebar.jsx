@@ -10,7 +10,7 @@ function Sidebar() {
         <aside class="w-64 " aria-label="Sidebar">
    <div class="px-3 py-4   bg-gray-200 min-h-screen dark:bg-[#202d60]">
       <a href="https://flowbite.com/" class="flex items-center pl-2.5 mb-5">
-         <img src="public/image/macmiil.png" class="h-6 mr-3 sm:h-7" alt="Flowbite Logo" />
+         <img src="/image/macmiil.png" class=" rounded-full h-10 mr-3 sm:h-7" alt="Flowbite Logo" />
          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">MACMIIL ONLINE</span>
       </a>
       <ul class="space-y-2">
