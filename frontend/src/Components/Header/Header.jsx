@@ -23,6 +23,10 @@ function header() {
 				<Link to='/Login'>login</Link>
 				</button>
 
+				<button>
+				<Link to='/Register'>Register</Link>
+				</button>
+
 				<Link to='/Dashboard'>
 				<button>
 				<a href="/#">Dashboard</a>

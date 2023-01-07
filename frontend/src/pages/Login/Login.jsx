@@ -8,20 +8,22 @@ import './Login.css'
 function Login() {
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
+  
 
+  const redirect = useNavigate();
   const {user} = useSelector((state) => state.auth);
 
    useEffect(() => {
-    if (user.status === 'Success') {
-      redirect('/');
+    if (user?.token) {
+     redirect ('/');
     }
-  }, [isLoading, isError]);
+  }, [user]);
 
   const { isLoading, isError, errorMessage } = useSelector(
     (state) => state.auth
   );
 
-  const redirect = useNavigate();
+  
 
  
 

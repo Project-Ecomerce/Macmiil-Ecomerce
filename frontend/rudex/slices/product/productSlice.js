@@ -45,7 +45,7 @@ createAsyncThunk('product/getall', async (_,{rejectWithValue}) =>{
     'product/create',
     async (productData, { rejectWithValue, getState }) => {
       try {
-        // const token = getState().auth.user.token;
+        const token = getState().auth.user.token;
   
         const { data } = await axios.post(
           'http://localhost:5000/api/product/n',
@@ -57,11 +57,11 @@ createAsyncThunk('product/getall', async (_,{rejectWithValue}) =>{
             subId: productData.image,
           },
   
-          // {
-          //   headers: {
-          //     Authorization: `Bearer ${token}`,
-          //   },
-          // }
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         console.log(data);
       } catch (error) {

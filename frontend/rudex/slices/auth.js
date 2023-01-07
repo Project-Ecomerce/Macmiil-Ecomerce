@@ -2,9 +2,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const User = JSON.parse(localStorage.getItem('User'))
+const userData = JSON.parse(localStorage.getItem('userData'))
 const initialState = {
-    user:  {},
+    user: localStorage.getItem("userData") ? JSON.parse(localStorage.getItem(userData)) : {},
     isLoading: false,
     isError: false,
     errorMessage: '',
@@ -13,11 +13,11 @@ const initialState = {
 
   // api --> login
 
-  export const login = createAsyncThunk('auth/login', async (data,{rejectWithValue})=>{
+  export const login = createAsyncThunk('auth/login', async (datas,{rejectWithValue})=>{
     try {
-        const {datas} = await axios.post('http://localhost:5000/api/user/login',{
-            Password:data.Password,
-            Email: data.Email
+        const {data} = await axios.post('http://localhost:5000/api/user/login',{
+            Password:datas.Password,
+            Email: datas.Email
         });
         if (datas?.status === 'ERROR') {
             return rejectWithValue(data.errorMessage || 'something went wrong')
@@ -25,6 +25,7 @@ const initialState = {
 
         localStorage.setItem('userData',JSON.stringify(data));
         console.log(data)
+        return data
     } catch (error) {
         return rejectWithValue(error)
     }

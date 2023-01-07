@@ -14,6 +14,7 @@ import Sidebar from './pages/Dashboard/Sidebar'
 import Login from './pages/Login/Login'
 import Costumers from './pages/Dashboard/costumers/costumers'
 import Createcostumers from './pages/Dashboard/costumers/Createcostumers'
+import Register from './pages/Login/Register'
 
 function App() {
   
@@ -24,6 +25,7 @@ function App() {
      <Routes>
       <Route path= '/' element={<Home/>} />
       <Route path= '/Login' element={<Login/>} />
+      <Route path= '/Register' element={<Register/>} />
       <Route path="/Dashboard" element = {<Dashboard />}>
        <Route path="Users" element = {<Users />} />
        <Route path="Catogary" element = {<Catogary />} />
