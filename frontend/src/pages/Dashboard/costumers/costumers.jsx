@@ -2,19 +2,19 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react';
 import {useDispatch,useSelector} from 'react-redux'
-import {getAllcostumer} from '../../../../rudex/slices/CostumerSlice'
+import {getAllProducts} from '../../../../rudex/slices/product/productSlice'
 // import Spinner from '../../components/';
 
 const Costumers = () => {
 
   const dispatch = useDispatch();
-  const { Costumer,isLoading,isError,isSuccess} = useSelector((state) => state.Costumer)
-  console.log(Costumer, "FOUND DATA!!!!!!!!!!")
+  const { products,isLoading,isError,isSuccess} = useSelector((state) => state.product)
+  console.log(products, "FOUND DATA!!!!!!!!!!")
 
   useEffect(() =>{
 
     // invocation ()
-dispatch(getAllcostumer())
+dispatch(getAllProducts())
   },[])
 
 
@@ -25,7 +25,7 @@ dispatch(getAllcostumer())
     console header 
    <div className='head w-full flex items-center justify-around'>
      <h1 className='text-xl font-bold'>costumer</h1>
-    <Link to="/CreateProducts">
+    <Link to="/Createcostumers">
     <button className='text-xl bg-slate-600 hover:bg-slate-400 text-white font-bold py-2 px-4 rounded mb-4 mr-[8rem] '>
        Create
      </button>
@@ -63,29 +63,30 @@ dispatch(getAllcostumer())
                 </th>
             </tr>
         </thead>
-        {Costumer?.custumers?.map((custumers) =>(
+        {products?.  product?.map(( product
+) =>(
            <tbody>
            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ">
               
                <th scope="row" class="flex items-center px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white ">
                  
                    <div class="pl-3">
-                       <div class="text-base font-semibold">{custumers. Name}</div>
+                       <div class="text-base font-semibold">{ product. title}</div>
                        
                    </div>  
                </th>
                <td class="px-6 py-4">
-               {custumers.costumerPhone}
+               { product.Price}
                </td>
                <td class="px-6 py-4">
                    <div class="flex items-center">
-                       <div class=""></div> {custumers.costumerEmail}
+                       <div class=""></div> { product.Store}
                    </div>
                </td>
 
                <td class="px-6 py-4">
                    <div class="flex items-center">
-                       <div class=""></div> {custumers.costumerAddress}
+                       <div class=""></div> { product.costumerAddress}
                    </div>
                </td>
 

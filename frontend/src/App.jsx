@@ -12,6 +12,8 @@ import SubCatogary from './pages/Dashboard/SubCatogary'
 import AddProducts from './pages/Dashboard/AddProducts'
 import Sidebar from './pages/Dashboard/Sidebar'
 import Login from './pages/Login/Login'
+import Costumers from './pages/Dashboard/costumers/costumers'
+import Createcostumers from './pages/Dashboard/costumers/Createcostumers'
 
 function App() {
   
@@ -25,10 +27,11 @@ function App() {
       <Route path="/Dashboard" element = {<Dashboard />}>
        <Route path="Users" element = {<Users />} />
        <Route path="Catogary" element = {<Catogary />} />
-       <Route path="Products" element = {<AddProducts />} />
+       <Route path="Products" element = {<Costumers />} />
        <Route path="Products" element = {<Sidebar />} />
        <Route path="SubCatogary" element = {<SubCatogary />} /> 
-       </Route>
+       </Route>,
+       <Route path="Createcostumers" element = {<Createcostumers />} /> 
      </Routes>
       <Footer/>
 

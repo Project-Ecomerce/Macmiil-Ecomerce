@@ -2,6 +2,7 @@
 @import url("https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css");
 
 .login {
+    margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,6 +12,7 @@
 
 .login > div {
     display: flex;
+    border-radius: 10px;
     align-items: center;
     flex-direction: column;
     padding: 80px;

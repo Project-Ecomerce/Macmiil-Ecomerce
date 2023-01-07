@@ -34,7 +34,7 @@ model users {
 
 model product {
   ProductId Int @id @default(autoincrement())
-  title String
+  title String?
   Description String?
   Price String
   image String?
