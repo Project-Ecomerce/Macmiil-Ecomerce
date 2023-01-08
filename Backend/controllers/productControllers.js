@@ -29,6 +29,7 @@ const getAll = async (req,res) =>{
 const create = async (req,res) =>{
     try {
         const {title,Price,Store, subId} = req.body;
+        console.log(req.body)
         const checkname = await prisma.product.findFirst({
             where :  {
                 title
@@ -59,7 +60,7 @@ const create = async (req,res) =>{
                 Price,
                 Store ,
                 userId:req.user.userId,
-                subatCagoryId : subId
+                subatCagoryId : +subId
 
             }
         })
@@ -101,6 +102,7 @@ const getOne = async (req,res) =>{
                   });
             }
     } catch (error) {
+        console.log(error)
         res.json({
             error,
           });
@@ -189,4 +191,7 @@ module.exports ={
     getOne,
     deleteproducts
 }
+
+
+
 

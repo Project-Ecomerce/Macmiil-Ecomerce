@@ -20,7 +20,7 @@ const Createcostumers = () => {
       useEffect(() => {
         if (newProductSuccess) {
           navigate('/Dashboard/products');
-          // dispatch(reset());
+          dispatch(reset());
         }
       }, [newProductSuccess]);
 
@@ -102,14 +102,15 @@ const Createcostumers = () => {
             <label htmlFor='body'>subId</label>
           </div>
           <div>
-            <textarea
+          <input
               value={subId}
               onChange={(e) => setsubId(e.target.value)}
+              type='text'
               className='px-2 py-2 rounded-[5px]'
-              placeholder='Post Body'
-              id='body'
+              placeholder='063'
+              id='Price'
               required
-            ></textarea>
+            />
           </div>
         </div>
 

@@ -8,13 +8,19 @@ const initialState = {
     isError: false,
     isSuccess: false,
     errorMessage: '',
-    updateLoading: false,
-    updateSuccess: false,
+   
 
 
     // NEW PRODUCT
 
     product: {},
+    newProductLoading: false,
+    newProductSuccess: false,
+    newProductError: false,
+    newProductErrorMsg: '',
+
+// get one
+    Newproduct: {},
     newProductLoading: false,
     newProductSuccess: false,
     newProductError: false,
@@ -46,6 +52,8 @@ createAsyncThunk('product/getall', async (_,{rejectWithValue}) =>{
     async (productData, { rejectWithValue, getState }) => {
       try {
         const token = getState().auth.user.token;
+
+        console.log(token)
   
         const { data } = await axios.post(
           'http://localhost:5000/api/product/n',
@@ -54,7 +62,7 @@ createAsyncThunk('product/getall', async (_,{rejectWithValue}) =>{
             Price: productData.Price,
             Store: productData.Store,
             subId: productData.subId,
-            subId: productData.image,
+            // subId: productData.image,
           },
   
           {
@@ -70,6 +78,23 @@ createAsyncThunk('product/getall', async (_,{rejectWithValue}) =>{
     }
   );
 
+  export const getOneproduct = createAsyncThunk(
+    'product/getOne',
+    async (ProductId, { rejectWithValue }) => {
+      try {
+        console.log(ProductId)
+        const { data } = await axios.get(
+          `http://localhost:5000/api/product/getone/${ProductId}`
+        );
+  
+        // console.log(data)
+        return data
+      } catch (error) {
+        console.log(error)
+        return rejectWithValue(error);
+      }
+    }
+  );
 
 
 
@@ -99,7 +124,32 @@ createAsyncThunk('product/getall', async (_,{rejectWithValue}) =>{
           state.isSuccess = false;
           state.products = [];
           state.errorMessage = 'Something went wrong please try again...';
+        })
+
+        // =================
+
+        builder .addCase(getOneproduct.pending,(state,action) =>{
+          state.newProductLoading = true;
+          state.newProductError = false;
+          state.newProductSuccess = false;
+          state.Newproduct = [];
+        })
+    
+        builder .addCase(getOneproduct.fulfilled,(state,action) =>{
+          state.newProductLoading = false;
+          state.newProductError = false;
+          state.newProductSuccess = true;
+          state.Newproduct = action.payload;
+        })
+    
+        .addCase(getOneproduct.rejected, (state, action) => {
+          state.newProductLoading = false;
+          state.newProductError = true;
+          state.newProductSuccess = false;
+          state.Newproduct = [];
+          state.newProductErrorMsg = 'Something went wrong please try again...';
         });
+
     
       }
 })

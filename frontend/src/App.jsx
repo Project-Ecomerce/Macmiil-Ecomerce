@@ -15,6 +15,7 @@ import Login from './pages/Login/Login'
 import Costumers from './pages/Dashboard/costumers/costumers'
 import Createcostumers from './pages/Dashboard/costumers/Createcostumers'
 import Register from './pages/Login/Register'
+import GetOneCostumer from './pages/Dashboard/costumers/GetOneCostumer'
 
 function App() {
   
@@ -32,8 +33,10 @@ function App() {
        <Route path="Products" element = {<Costumers />} />
        <Route path="Products" element = {<Sidebar />} />
        <Route path="SubCatogary" element = {<SubCatogary />} /> 
-       </Route>,
        <Route path="Createcostumers" element = {<Createcostumers />} /> 
+       <Route path="Products/GetOneCostumer/:ProductId" element = {<GetOneCostumer />} />
+       </Route>,
+       
      </Routes>
       <Footer/>
 

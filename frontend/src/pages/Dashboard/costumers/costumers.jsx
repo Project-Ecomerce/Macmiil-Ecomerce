@@ -69,19 +69,17 @@ dispatch(getAllProducts())
            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ">
               
                <th scope="row" class="flex items-center px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white ">
-                 
+               <td class="px-6 py-4">
+               { product.ProductId}
+               </td>
                    <div class="pl-3">
                        <div class="text-base font-semibold">{ product. title}</div>
                        
                    </div>  
                </th>
+               
                <td class="px-6 py-4">
                { product.Price}
-               </td>
-               <td class="px-6 py-4">
-                   <div class="flex items-center">
-                       <div class=""></div> { product.Store}
-                   </div>
                </td>
 
                <td class="px-6 py-4">
@@ -92,9 +90,11 @@ dispatch(getAllProducts())
 
               <Link to='/GetOneCostumer'>
               <td class="px-6 py-4">
-                   <button className='px-3 py-2 bg-green-500 text-white'>
+              <Link to={`/Dashboard/products/GetOneCostume/${product.ProductId}`}>
+              <button className='px-3 py-2 bg-green-500 text-white'>
                    view
                  </button>
+                    </Link>
                </td>
               </Link>
 

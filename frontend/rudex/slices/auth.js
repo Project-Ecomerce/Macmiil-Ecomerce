@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const userData = JSON.parse(localStorage.getItem('userData'))
 const initialState = {
-    user: localStorage.getItem("userData") ? JSON.parse(localStorage.getItem(userData)) : {},
+    user: localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")) : {},
     isLoading: false,
     isError: false,
     errorMessage: '',
@@ -31,6 +31,29 @@ const initialState = {
     }
   })
 
+  // 2. Registration
+
+export const registration = createAsyncThunk(
+    'users/register',
+    async (datas, { rejectWithValue }) => {
+      try {
+        const { data } = await axios.post('http://localhost:5000/api/user/new', {
+            Password:datas.Password,
+            Email: datas.Email,
+            LastName: datas.LastName,
+            FirstName: datas.FirstName
+        });
+  
+        localStorage.setItem('userData', JSON.stringify(data));
+  
+        return data;
+      } catch (error) {
+        console.log(error);
+        return rejectWithValue(error);
+      }
+    }
+  );
+
   const userSlice = createSlice({
     name:'user',
     initialState,
@@ -55,6 +78,24 @@ const initialState = {
             state.errorMessage = 'Something went wrong';
             state.isLoading = false;
         })
+
+        .addCase(registration.pending, (state, action) => {
+            state.isLoading = true;
+            state.isSuccess = false;
+          })
+          .addCase(registration.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.isSuccess = true;
+            state.isError = false;
+            state.errorMessage = '';
+            state.user = action.payload;
+          })
+          .addCase(registration.rejected, (state, action) => {
+            state.isLoading = false;
+            state.isSuccess = false;
+            state.isError = true;
+            state.errorMessage = 'Something went wrong';
+          });
     }
 })
 export const { logout } = userSlice.actions;
