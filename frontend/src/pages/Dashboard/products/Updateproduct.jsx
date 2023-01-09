@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import {
     editProduct,
     getOneproduct,
+    reset
   
 } from '../../../../rudex/slices/product/productSlice';
 const Updateproduct = () => {
@@ -24,6 +25,7 @@ const Updateproduct = () => {
 
   useEffect(() => {
     dispatch(getOneproduct(params?.ProductId));
+    console.log(params.ProductId)
   }, [params]);
 
   useEffect(() => {
@@ -38,16 +40,16 @@ const Updateproduct = () => {
 
   const navigate = useNavigate();
 
-  const success = () => {
-    if (newProductSuccess === true) {
-      navigate(`/Dashboard/patients`);
-    //   dispatch(reset());
-    }
-  };
+  // const success = () => {
+  //   if (newProductSuccess === true) {
+  //     navigate(`/Dashboard/patients/get/${params.ProductId}`);
+  //     dispatch(reset());
+  //   }
+  // };
 
-  useEffect(() => {
-    success();
-  }, [newProductSuccess]);
+  // useEffect(() => {
+  //   success();
+  // }, [newProductSuccess]);
 
   const updateHandler = (e) => {
     e.preventDefault();

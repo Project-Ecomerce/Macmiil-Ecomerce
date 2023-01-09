@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {  useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { newProduct } from '../../../../rudex/slices/product/productSlice';
+import { newProduct,reset } from '../../../../rudex/slices/product/productSlice';
 
 const Createproduct = () => {
     const [title, settitle] = useState('');
@@ -19,10 +19,12 @@ const Createproduct = () => {
 
       useEffect(() => {
         if (newProductSuccess) {
-          navigate('/Dashboard/products');
+          navigate(`/Dashboard/products`);
           dispatch(reset());
         }
       }, [newProductSuccess]);
+
+      
 
       const handleSubmit = (e) => {
         e.preventDefault();

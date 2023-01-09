@@ -15,7 +15,7 @@ const initialState = {
 
   export const login = createAsyncThunk('auth/login', async (datas,{rejectWithValue})=>{
     try {
-        const {data} = await axios.post('http://localhost:5000/api/user/login',{
+        const {data} = await axios.post('http://localhost:7000/api/user/login',{
             Password:datas.Password,
             Email: datas.Email
         });
@@ -37,7 +37,7 @@ export const registration = createAsyncThunk(
     'users/register',
     async (datas, { rejectWithValue }) => {
       try {
-        const { data } = await axios.post('http://localhost:5000/api/user/new', {
+        const { data } = await axios.post('http://localhost:7000/api/user/new', {
             Password:datas.Password,
             Email: datas.Email,
             LastName: datas.LastName,

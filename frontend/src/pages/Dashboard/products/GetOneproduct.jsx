@@ -22,23 +22,23 @@ const GetOneproduct = () => {
    {newProductLoading? <p>Loading...</p>:(
        <>
         
-         {Newproduct?. product?.map(( product
-) =>( 
+         {/* {Newproduct?. product?.map(( product */}
+{/* ) =>(  */}
 
-    <tbody>
+    <div>
     <h1 className='text-2xl font-bold'>Firstname</h1>
-    <p>{product.title}</p>
+    <p>{Newproduct?.product?.title}</p>
     <h1 className='text-2xl font-bold'>phone</h1>
-    <p>{product.title}</p>
+    <p>{Newproduct?.product?.title}</p>
     <h1 className='text-2xl font-bold'>Address</h1>
-    <p>{product.Store}</p>
+    <p>{Newproduct?.product?.Store}</p>
     <h1 className='text-2xl font-bold'>Address</h1>
-    <p>{product.subatCagoryId}</p>
+    <p>{Newproduct?.product?.subatCagoryId}</p>
     <h1 className='text-2xl font-bold'>Registered at</h1>
     
-  </tbody>
+  </div>
           
-        ))}
+        {/* ))} */}
     
     
    

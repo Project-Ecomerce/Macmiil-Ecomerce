@@ -166,7 +166,7 @@ try {
 
     const product = await prisma.product.delete({
         where:{
-            ProductId: parseInt(ProductId),
+            ProductId: +(ProductId),
         }
      });
 
@@ -176,6 +176,7 @@ try {
         product,
       })
 } catch (error) {
+    console.log(error)
     res.json({
         success: false,
         message:"data does not exist",

@@ -17,10 +17,11 @@ const Products = () => {
 dispatch(getAllProducts())
   },[])
 
-  const deleteHandler = () => {
-    console.log(products);
-    dispatch(deleteProduct(products.ProductId));
-  };
+//   const deleteHandler = () => {
+    
+//     dispatch(deleteProduct(products.ProductId));
+//     console.log(products);
+//   };
 
 
   return (
@@ -104,8 +105,8 @@ dispatch(getAllProducts())
               
 
                <td class="px-6 py-4">
-                   <button className='px-3 py-2 bg-green-500 text-white'onClick={deleteHandler}>
-                   Edite
+                   <button className='px-3 py-2 bg-green-500 text-white'onClick={() => dispatch(deleteProduct(products.ProductId))}>
+                   delete
                 </button>
                </td>
 

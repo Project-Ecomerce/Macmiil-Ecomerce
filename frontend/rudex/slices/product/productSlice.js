@@ -14,6 +14,7 @@ const initialState = {
     // NEW PRODUCT
 
     product: {},
+    UpdateProductLoading: false,
     newProductLoading: false,
     newProductSuccess: false,
     newProductError: false,
@@ -37,7 +38,7 @@ const initialState = {
 export const getAllProducts = 
 createAsyncThunk('product/getall', async (_,{rejectWithValue}) =>{
     try {
-      const {data} = await axios.get('http://localhost:5000/api/product/all')
+      const {data} = await axios.get('http://localhost:7000/api/product/all')
       console.log(data)
       return data
     } catch (error) {
@@ -56,7 +57,7 @@ createAsyncThunk('product/getall', async (_,{rejectWithValue}) =>{
         console.log(token)
   
         const { data } = await axios.post(
-          'http://localhost:5000/api/product/n',
+          'http://localhost:7000/api/product/n',
           {
             title: productData.title,
             Price: productData.Price,
@@ -84,7 +85,7 @@ createAsyncThunk('product/getall', async (_,{rejectWithValue}) =>{
       try {
         console.log(ProductId)
         const { data } = await axios.get(
-          `http://localhost:5000/api/product/getone/${ProductId}`
+          `http://localhost:7000/api/product/getone/${ProductId}`
         );
   
         // console.log(data)
@@ -107,7 +108,7 @@ export const deleteProduct = createAsyncThunk(
 
       console.log(token)
       const { data } = await axios.delete(
-        `http://localhost:5000/api/product/delete/${ProductId}`,
+        `http://localhost:7000/api/product/delete/${ProductId}`,
 
         {
           headers: {
@@ -129,10 +130,13 @@ export const deleteProduct = createAsyncThunk(
 
 export const editProduct = createAsyncThunk(
   'product/update',
-  async (datas, { rejectWithValue }) => {
+  async (datas, { rejectWithValue,getState }) => {
     try {
+      const token = getState().auth.user.token;
+
+      console.log(token)
       const { data } = await axios.patch(
-        `http://localhost:5000/api/product/update/${datas.ProductId}`,
+        `http://localhost:7000/api/product/update/${datas.ProductId}`,
         {
           title: datas.title,
           Price: datas.Price,
@@ -140,6 +144,12 @@ export const editProduct = createAsyncThunk(
           subId: datas.subId,
           // subId: productData.image,
         },
+
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 console.log(data)
       return data;
@@ -154,7 +164,13 @@ console.log(data)
  const productSlice = createSlice({
     name: 'Products slice',
     initialState,
-    reducers:{},
+    reducers:{
+      reset: (state, action) => {
+        state.UpdateProductLoading = false;
+        state.newProductSuccess = false;
+        state.product = {};
+      },
+    },
 
     extraReducers:(builder) => {
         builder .addCase(getAllProducts.pending,(state,action) =>{
@@ -201,11 +217,32 @@ console.log(data)
           state.newProductSuccess = false;
           state.Newproduct = [];
           state.newProductErrorMsg = 'Something went wrong please try again...';
-        });
+        })
+// =======================
+.addCase(deleteProduct.pending,(state,action) =>{
+  state.isLoading = true;
+  state.isError = false;
+  state.isSuccess = false;
+  state.products = [];
+})
 
+builder .addCase(deleteProduct.fulfilled,(state,action) =>{
+  state.isLoading = false;
+  state.isError = false;
+  state.isSuccess = true;
+  state.products = state.products.filter((products) => products.ProductId !== action.payload);
+})
+
+.addCase(deleteProduct.rejected, (state, action) => {
+  state.isLoading = false;
+  state.isError = true;
+  state.isSuccess = false;
+  state.products = [];
+  state.errorMessage = 'Something went wrong please try again...';
+})
     
       }
 })
 
-// export const { reset } = productSlice.actions;
+export const { reset } = productSlice.actions;
 export default productSlice;
