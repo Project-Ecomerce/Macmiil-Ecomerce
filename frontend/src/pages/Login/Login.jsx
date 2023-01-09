@@ -45,9 +45,9 @@ function Login() {
     dispatch(login(data));
   };
   return (
-    <form class="login" onSubmit={loginHandler}>
+    <form className="login" onSubmit={loginHandler}>
     <div >
-        <h1 class="title">Log In</h1>
+        <h1 className="title">Log In</h1>
         <p className='my-3 text-red-500'>{isError ? errorMessage : ''}</p>
         <input type='text'
                 value={Email}
@@ -59,8 +59,8 @@ function Login() {
                'Login
             </button>
         <a href="#">Forgot your password?</a>
-        <p class="text">Don't have an account?</p>
-        <button class="buttonShadow">Create new account</button>
+        <p className="text">Don't have an account?</p>
+        <button className="buttonShadow">Create new account</button>
     </div>
 </form>
 

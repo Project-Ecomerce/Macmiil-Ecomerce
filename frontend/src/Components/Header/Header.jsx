@@ -50,15 +50,15 @@ const handleNav = () => setnav(!nav);
 		<header className={style. header}>
 			<h3>LOGO</h3>
 			<nav ref={navRef}>
-				<a href="/#">Home</a>
-				<a href="/#">My work</a>
-				<a href="/#">Blog</a>
-				<a href="/#">About me</a>
+				
 
 			 
 			  {showbtn ?(
 				<>
-				
+				<a href="/#">Home</a>
+				<a href="/#">My work</a>
+				<a href="/#">Blog</a>
+				<a href="/#">About me</a>
 				
 					<button>
 					<Link to='/Login'>login</Link>
@@ -71,10 +71,10 @@ const handleNav = () => setnav(!nav);
 				</>
 			  ):
 			  <>
-				<button>
-				<li onClick={logoutHandler}>
+				<button onClick={logoutHandler}>
+				
 				logout
-				</li>
+				
 				</button>
                 <>
 				{admin? (

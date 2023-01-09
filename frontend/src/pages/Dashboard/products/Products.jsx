@@ -2,10 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react';
 import {useDispatch,useSelector} from 'react-redux'
-import {getAllProducts} from '../../../../rudex/slices/product/productSlice'
+import {getAllProducts ,deleteProduct} from '../../../../rudex/slices/product/productSlice'
 // import Spinner from '../../components/';
 
-const Costumers = () => {
+const Products = () => {
 
   const dispatch = useDispatch();
   const { products,isLoading,isError,isSuccess} = useSelector((state) => state.product)
@@ -17,6 +17,11 @@ const Costumers = () => {
 dispatch(getAllProducts())
   },[])
 
+  const deleteHandler = () => {
+    console.log(products);
+    dispatch(deleteProduct(products.ProductId));
+  };
+
 
   return (
     
@@ -25,7 +30,7 @@ dispatch(getAllProducts())
     console header 
    <div className='head w-full flex items-center justify-around'>
      <h1 className='text-xl font-bold'>costumer</h1>
-    <Link to="/Createcostumers">
+    <Link to="/Dashboard/patients/new">
     <button className='text-xl bg-slate-600 hover:bg-slate-400 text-white font-bold py-2 px-4 rounded mb-4 mr-[8rem] '>
        Create
      </button>
@@ -88,20 +93,28 @@ dispatch(getAllProducts())
                    </div>
                </td>
 
-              <Link to='/GetOneCostumer'>
+              
               <td class="px-6 py-4">
-              <Link to={`/Dashboard/products/GetOneCostume/${product.ProductId}`}>
+              <Link to={`/Dashboard/patients/get/${product.ProductId}`}>
               <button className='px-3 py-2 bg-green-500 text-white'>
                    view
                  </button>
                     </Link>
                </td>
-              </Link>
+              
 
                <td class="px-6 py-4">
-                   <button className='px-3 py-2 bg-green-500 text-white'>
+                   <button className='px-3 py-2 bg-green-500 text-white'onClick={deleteHandler}>
                    Edite
                 </button>
+               </td>
+
+               <td class="px-6 py-4">
+              <Link to={`/Dashboard/patients/Edit/${product.ProductId}`}>
+              <button className='px-3 py-2 bg-green-500 text-white'>
+              Eeeeee
+                 </button>
+                    </Link>
                </td>
 
                
@@ -129,4 +142,4 @@ dispatch(getAllProducts())
   )
 }
 
-export default Costumers
+export default Products

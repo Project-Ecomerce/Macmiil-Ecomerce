@@ -97,6 +97,59 @@ createAsyncThunk('product/getall', async (_,{rejectWithValue}) =>{
   );
 
 
+  // delete products
+
+export const deleteProduct = createAsyncThunk(
+  '/products/delete',
+  async (ProductId, { rejectWithValue,getState }) => {
+    try {
+      const token = getState().auth.user.token;
+
+      console.log(token)
+      const { data } = await axios.delete(
+        `http://localhost:5000/api/product/delete/${ProductId}`,
+
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(data);
+      
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+
+// API REQ -> EDITING product
+
+export const editProduct = createAsyncThunk(
+  'product/update',
+  async (datas, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.patch(
+        `http://localhost:5000/api/product/update/${datas.ProductId}`,
+        {
+          title: datas.title,
+          Price: datas.Price,
+          Store: datas.Store,
+          subId: datas.subId,
+          // subId: productData.image,
+        },
+      );
+console.log(data)
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+
 
  const productSlice = createSlice({
     name: 'Products slice',

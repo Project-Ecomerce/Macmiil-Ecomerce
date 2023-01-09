@@ -72,7 +72,7 @@ const create = async (req,res) =>{
     } catch (error) {
         console.log(error)
         res.json({
-            error,
+            message: 'The product you are looking for is not in the database',
            
         })
     }
@@ -104,7 +104,7 @@ const getOne = async (req,res) =>{
     } catch (error) {
         console.log(error)
         res.json({
-            error,
+            message: 'The product you are looking for is not in the database',
           });
     }
  }
@@ -145,7 +145,7 @@ const update = async (req, res) => {
         console.log(error)
       res.json({
         success: false,
-        error,
+        message: 'The product you are looking for is not in the database',
       });
     }
   };

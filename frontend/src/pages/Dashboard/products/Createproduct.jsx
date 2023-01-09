@@ -4,7 +4,7 @@ import {  useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { newProduct } from '../../../../rudex/slices/product/productSlice';
 
-const Createcostumers = () => {
+const Createproduct = () => {
     const [title, settitle] = useState('');
     const [Price, setPrice] = useState('');
     const [Store, setStore] = useState('');
@@ -132,4 +132,4 @@ const Createcostumers = () => {
   )
 }
 
-export default Createcostumers
+export default Createproduct

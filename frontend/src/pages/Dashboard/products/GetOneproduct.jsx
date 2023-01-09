@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getOneproduct } from '../../../../rudex/slices/product/productSlice';
 // import Spinner from '../../../components/Spinner';
 
-const GetOneCostumer = () => {
+const GetOneproduct = () => {
     const params = useParams();
 
   const { Newproduct, newProductLoading } = useSelector((state) => state.product);
@@ -22,18 +22,18 @@ const GetOneCostumer = () => {
    {newProductLoading? <p>Loading...</p>:(
        <>
         
-        {Newproduct?.product?.map(( product
-) =>(
+         {Newproduct?. product?.map(( product
+) =>( 
 
     <tbody>
     <h1 className='text-2xl font-bold'>Firstname</h1>
     <p>{product.title}</p>
     <h1 className='text-2xl font-bold'>phone</h1>
-    <p>{product.Price}</p>
+    <p>{product.title}</p>
     <h1 className='text-2xl font-bold'>Address</h1>
     <p>{product.Store}</p>
     <h1 className='text-2xl font-bold'>Address</h1>
-    <p>{product.subId}</p>
+    <p>{product.subatCagoryId}</p>
     <h1 className='text-2xl font-bold'>Registered at</h1>
     
   </tbody>
@@ -51,7 +51,7 @@ const GetOneCostumer = () => {
   )
 }
 
-export default GetOneCostumer
+export default GetOneproduct
 
 
 // {newProductLoading ? (
