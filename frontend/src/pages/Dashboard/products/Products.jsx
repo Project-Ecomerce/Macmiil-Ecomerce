@@ -113,7 +113,7 @@ dispatch(getAllProducts())
                <td class="px-6 py-4">
               <Link to={`/Dashboard/patients/Edit/${product.ProductId}`}>
               <button className='px-3 py-2 bg-green-500 text-white'>
-              Eeeeee
+              update
                  </button>
                     </Link>
                </td>
