@@ -230,7 +230,7 @@ builder .addCase(deleteProduct.fulfilled,(state,action) =>{
   state.isLoading = false;
   state.isError = false;
   state.isSuccess = true;
-  state.products = state.products.filter((products) => products.ProductId !== action.payload);
+  state.products =  action.payload;
 })
 
 .addCase(deleteProduct.rejected, (state, action) => {
