@@ -41,7 +41,7 @@ model product {
   Store String
   userId Int
   subatCagoryId Int
-  users  users    @relation(fields: [userId], references: [userId])
+  users  users    @relation(fields: [userId], references: [userId],onDelete: Cascade)
   subCatagory  subCatagory   @relation(fields: [ subatCagoryId ], references: [ subatCagoryId] , onDelete: Cascade)
   cart cart[]
   payment payment[]
@@ -82,7 +82,7 @@ model subCatagory {
   Product product[]
   catogory catagory @relation(fields: [CategoryId], references: [CagoryId],onDelete: Cascade)
    userId Int 
-  user  users    @relation(fields: [userId], references: [userId])
+  user  users    @relation(fields: [userId], references: [userId],onDelete: Cascade)
 }
 
 
@@ -90,7 +90,7 @@ model catagory {
   CagoryId Int @id @default(autoincrement())
   type String
   userId Int 
-  users  users    @relation(fields: [userId], references: [userId])
+  users  users    @relation(fields: [userId], references: [userId],onDelete: Cascade)
   subCategorie subCatagory[]
 }
 

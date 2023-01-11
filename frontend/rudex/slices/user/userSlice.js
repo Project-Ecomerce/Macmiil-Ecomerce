@@ -3,43 +3,37 @@ import axios from 'axios';
 
 
 const initialState = {
-    products: [],
+    users: [],
     isLoading: false,
     isError: false,
     isSuccess: false,
     errorMessage: '',
    
-
-
     // NEW PRODUCT
-    
 
-    product: {},
-    UpdateProductLoading: false,
-    newProductLoading: false,
-    newProductSuccess: false,
-    newProductError: false,
-    newProductErrorMsg: '',
+    Newuser: {},
+    NewuserLoading: false,
+    NewuserSuccess: false,
+    NewuserError: false,
+    NewuserErrorMsg: '',
 
 // get one
-    Newproduct: {},
-    newProductLoading: false,
-    newProductSuccess: false,
-    newProductError: false,
-    newProductErrorMsg: '',
-
-
-    
+    getOne: {},
+    getOneLoading: false,
+    getOneSuccess: false,
+    getOneError: false,
+    getOneErrorMsg: '',
+ 
 }
 
 // API REQUEST
 
 // 1. all product
 
-export const getAllProducts = 
-createAsyncThunk('product/getall', async (_,{rejectWithValue}) =>{
+export const getAlluser = 
+createAsyncThunk('user/getall', async (_,{rejectWithValue}) =>{
     try {
-      const {data} = await axios.get('http://localhost:7000/api/product/all')
+      const {data} = await axios.get('http://localhost:7000/api/user/all')
       console.log(data)
       return data
     } catch (error) {
@@ -49,21 +43,21 @@ createAsyncThunk('product/getall', async (_,{rejectWithValue}) =>{
   })
 
   // 2. POST REQUEST -> NEW PRODUCTS
-  export const newProduct = createAsyncThunk(
+  export const newUser = createAsyncThunk(
     'product/create',
-    async (productData, { rejectWithValue, getState }) => {
+    async (userData, { rejectWithValue, getState }) => {
       try {
         const token = getState().auth.user.token;
 
         console.log(token)
   
         const { data } = await axios.post(
-          'http://localhost:7000/api/product/n',
+          'http://localhost:7000/api/user/',
           {
-            title: productData.title,
-            Price: productData.Price,
-            Store: productData.Store,
-            subId: productData.subId,
+            FirstName: userData.FirstName,
+            LastName: userData.LastName,
+            Email: userData.Email,
+            Password: userData.Password,
             // subId: productData.image,
           },
   
@@ -80,13 +74,13 @@ createAsyncThunk('product/getall', async (_,{rejectWithValue}) =>{
     }
   );
 
-  export const getOneproduct = createAsyncThunk(
-    'product/getOne',
-    async (ProductId, { rejectWithValue }) => {
+  export const getOneuser = createAsyncThunk(
+    'user/getOne',
+    async (userId, { rejectWithValue }) => {
       try {
         console.log(ProductId)
         const { data } = await axios.get(
-          `http://localhost:7000/api/product/getone/${ProductId}`
+          `http://localhost:7000/api/user/getone/${userId}`
         );
   
         // console.log(data)
@@ -101,15 +95,15 @@ createAsyncThunk('product/getall', async (_,{rejectWithValue}) =>{
 
   // delete products
 
-export const deleteProduct = createAsyncThunk(
+export const deleteuser = createAsyncThunk(
   '/products/delete',
-  async (ProductId, { rejectWithValue,getState }) => {
+  async (userId, { rejectWithValue,getState }) => {
     try {
       const token = getState().auth.user.token;
 
       console.log(token)
       const { data } = await axios.delete(
-        `http://localhost:7000/api/product/delete/${ProductId}`,
+        `http://localhost:7000/api/user/delete/${userId}`,
 
         {
           headers: {
@@ -129,21 +123,52 @@ export const deleteProduct = createAsyncThunk(
 
 // API REQ -> EDITING product
 
-export const editProduct = createAsyncThunk(
+export const edituser = createAsyncThunk(
   'product/update',
   async (datas, { rejectWithValue,getState }) => {
     try {
       const token = getState().auth.user.token;
 
       console.log(token)
-      const { data } = await axios.patch(
-        `http://localhost:7000/api/product/update/${datas.ProductId}`,
+      const { data } = await axios.put(
+        `http://localhost:7000/api/user/update/${datas.userId}`,
         {
-          title: datas.title,
-          Price: datas.Price,
-          Store: datas.Store,
-          subId: datas.subId,
+          FirstName: datas.FirstName,
+          LastName: datas.LastName,
+          Email: datas.Email,
+          Password: datas.Password,
           // subId: productData.image,
+        },
+
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+console.log(data)
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+// API REQ -> EDITING product
+
+export const editrole = createAsyncThunk(
+  'user/updaterole',
+  async (datas, { rejectWithValue,getState }) => {
+    try {
+      const token = getState().auth.user.token;
+
+      console.log(token)
+      const { data } = await axios.put(
+        `http://localhost:7000/api/user/role/${datas.userId}`,
+        {
+          userId: datas.userId,
+          Role: datas.Role,
+         
         },
 
         {
@@ -162,7 +187,7 @@ console.log(data)
 
 
 
- const productSlice = createSlice({
+ const userSlice = createSlice({
     name: 'Products slice',
     initialState,
     reducers:{
@@ -174,76 +199,76 @@ console.log(data)
     },
 
     extraReducers:(builder) => {
-        builder .addCase(getAllProducts.pending,(state,action) =>{
+        builder .addCase(getAlluser.pending,(state,action) =>{
           state.isLoading = true;
           state.isError = false;
           state.isSuccess = false;
-          state.products = [];
+          state.users = [];
         })
     
-        builder .addCase(getAllProducts.fulfilled,(state,action) =>{
+        builder .addCase(getAlluser.fulfilled,(state,action) =>{
           state.isLoading = false;
           state.isError = false;
           state.isSuccess = true;
-          state.products = action.payload;
+          state.users = action.payload;
         })
     
-        .addCase(getAllProducts.rejected, (state, action) => {
+        .addCase(getAlluser.rejected, (state, action) => {
           state.isLoading = false;
           state.isError = true;
           state.isSuccess = false;
-          state.products = [];
+          state.users = [];
           state.errorMessage = 'Something went wrong please try again...';
         })
 
         // =================
 
-        builder .addCase(getOneproduct.pending,(state,action) =>{
+        builder .addCase(getOneuser.pending,(state,action) =>{
           state.newProductLoading = true;
           state.newProductError = false;
           state.newProductSuccess = false;
-          state.Newproduct = [];
+          state.getOne = [];
         })
     
-        builder .addCase(getOneproduct.fulfilled,(state,action) =>{
+        builder .addCase(getOneuser.fulfilled,(state,action) =>{
           state.newProductLoading = false;
           state.newProductError = false;
           state.newProductSuccess = true;
-          state.Newproduct = action.payload;
+          state.getOne = action.payload;
         })
     
-        .addCase(getOneproduct.rejected, (state, action) => {
+        .addCase(getOneuser.rejected, (state, action) => {
           state.newProductLoading = false;
           state.newProductError = true;
           state.newProductSuccess = false;
-          state.Newproduct = [];
+          state.getOne = [];
           state.newProductErrorMsg = 'Something went wrong please try again...';
         })
 // =======================
-.addCase(deleteProduct.pending,(state,action) =>{
-  state.isLoading = true;
-  state.isError = false;
-  state.isSuccess = false;
-  state.products = [];
-})
+// .addCase(deleteProduct.pending,(state,action) =>{
+//   state.isLoading = true;
+//   state.isError = false;
+//   state.isSuccess = false;
+//   state.products = [];
+// })
 
-builder .addCase(deleteProduct.fulfilled,(state,action) =>{
-  state.isLoading = false;
-  state.isError = false;
-  state.isSuccess = true;
-  state.products =  action.payload;
-})
+// builder .addCase(deleteProduct.fulfilled,(state,action) =>{
+//   state.isLoading = false;
+//   state.isError = false;
+//   state.isSuccess = true;
+//   state.products =  action.payload;
+// })
 
-.addCase(deleteProduct.rejected, (state, action) => {
-  state.isLoading = false;
-  state.isError = true;
-  state.isSuccess = false;
-  state.products = [];
-  state.errorMessage = 'Something went wrong please try again...';
-})
+// .addCase(deleteProduct.rejected, (state, action) => {
+//   state.isLoading = false;
+//   state.isError = true;
+//   state.isSuccess = false;
+//   state.products = [];
+//   state.errorMessage = 'Something went wrong please try again...';
+// })
     
       }
 })
 
-export const { reset } = productSlice.actions;
-export default productSlice;
+// export const { reset } = productSlice.actions;
+export default userSlice;

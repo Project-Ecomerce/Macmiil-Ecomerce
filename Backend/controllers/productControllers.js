@@ -72,7 +72,7 @@ const create = async (req,res) =>{
     } catch (error) {
         console.log(error)
         res.json({
-            message: 'The product you are looking for is not in the database',
+            message: 'The subatCagory isnot found',
            
         })
     }

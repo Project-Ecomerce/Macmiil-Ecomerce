@@ -2,36 +2,32 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react';
 import {useDispatch,useSelector} from 'react-redux'
-import {getAllProducts ,deleteProduct} from '../../../../rudex/slices/product/productSlice'
+import {getAlluser ,deleteuser} from '../../../../rudex/slices/user/userSlice'
 // import Spinner from '../../components/';
 
-const Products = () => {
-
+const User = () => {
+    
   const dispatch = useDispatch();
-  const { products,isLoading,isError,isSuccess} = useSelector((state) => state.product)
-  console.log(products, "FOUND DATA!!!!!!!!!!")
+  const { users,isLoading,isError,isSuccess} = useSelector((state) => state.userSlice)
+  console.log(users, "FOUND DATA!!!!!!!!!!")
 
   useEffect(() =>{
 
     // invocation ()
-dispatch(getAllProducts())
+dispatch(getAlluser())
   },[])
 
   const deleteHandler = () => {
     
-    dispatch(deleteProduct(products.ProductId));
-    console.log(products);
+    dispatch(deleteuser(users.ProductId));
+    console.log(users);
   };
-
-
   return (
-    
-    
     <div className='w-[100%]   sm:w-[100%]'>
     console header 
    <div className='head w-full flex items-center justify-around'>
      <h1 className='text-xl font-bold'>costumer</h1>
-    <Link to="/Dashboard/patients/new">
+    <Link to="/Dashboard/User/new">
     <button className='text-xl bg-slate-600 hover:bg-slate-400 text-white font-bold py-2 px-4 rounded mb-4 mr-[8rem] '>
        Create
      </button>
@@ -69,34 +65,34 @@ dispatch(getAllProducts())
                 </th>
             </tr>
         </thead>
-        {products?.  product?.map(( product
+        {users?.  users?.map(( users
 ) =>(
            <tbody>
            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ">
               
                <th scope="row" class="flex items-center px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white ">
                <td class="px-6 py-4">
-               { product.ProductId}
+               { users.userId}
                </td>
                    <div class="pl-3">
-                       <div class="text-base font-semibold">{ product. title}</div>
+                       <div class="text-base font-semibold">{ users. FirstName}</div>
                        
                    </div>  
                </th>
                
                <td class="px-6 py-4">
-               { product.Price}
+               { users.Price}
                </td>
 
-               <td class="px-6 py-4">
+               {/* <td class="px-6 py-4">
                    <div class="flex items-center">
-                       <div class=""></div> { product.costumerAddress}
+                       <div class=""></div> { users.costumerAddress}
                    </div>
-               </td>
+               </td> */}
 
               
               <td class="px-6 py-4">
-              <Link to={`/Dashboard/patients/get/${product.ProductId}`}>
+              <Link to={`/Dashboard/patients/get/${users.userId}`}>
               <button className='px-3 py-2 bg-green-500 text-white'>
                    view
                  </button>
@@ -111,9 +107,17 @@ dispatch(getAllProducts())
                </td>
 
                <td class="px-6 py-4">
-              <Link to={`/Dashboard/patients/Edit/${product.ProductId}`}>
+              <Link to={`/Dashboard/User/Edit/${users.userId}`}>
               <button className='px-3 py-2 bg-green-500 text-white'>
               update
+                 </button>
+                    </Link>
+               </td>
+
+               <td class="px-6 py-4">
+              <Link to={`/Dashboard/User/role/${users.userId}`}>
+              <button className='px-3 py-2 bg-green-500 text-white'>
+              role
                  </button>
                     </Link>
                </td>
@@ -137,10 +141,7 @@ dispatch(getAllProducts())
      )}
      
      </div>
-
-
-    
   )
 }
 
-export default Products
+export default User

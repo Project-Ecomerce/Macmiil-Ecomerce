@@ -17,6 +17,10 @@ import Products from './pages/Dashboard/products/Products'
 import Createproduct from './pages/Dashboard/products/Createproduct'
 import GetOneproduct from './pages/Dashboard/products/GetOneproduct'
 import Updateproduct from './pages/Dashboard/products/updateproduct'
+import User from './pages/Dashboard/user/User'
+import Createuser from './pages/Dashboard/user/Createuser'
+import Updateuser from './pages/Dashboard/user/Updateuser'
+import Role from './pages/Dashboard/user/Role'
 
 function App() {
   
@@ -29,8 +33,11 @@ function App() {
       <Route path= '/Login' element={<Login/>} />
       <Route path= '/Register' element={<Register/>} />
       <Route path='/Dashboard' element={<Dashboard />}>
+      <Route path='User' element={<User />} />
+      <Route path='User/new' element={<Createuser />} />
+      <Route path='User/Edit/:userId' element={<Updateuser />} />
+      <Route path='User/role/:userId' element={<Role />} />
             <Route path='Products' element={<Products />}></Route>
-            {/* <Route path='patients' element={<PatientsDash />} /> */}
             <Route path='patients/new' element={<Createproduct />} />
             <Route path='patients/get/:ProductId' element={<GetOneproduct />} />
             <Route path='patients/Edit/:ProductId' element={<Updateproduct />} />
