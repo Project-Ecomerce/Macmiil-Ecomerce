@@ -12,6 +12,7 @@ const initialState = {
 
 
     // NEW PRODUCT
+    
 
     product: {},
     UpdateProductLoading: false,

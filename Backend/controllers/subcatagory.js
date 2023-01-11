@@ -54,7 +54,7 @@ const createSubCategory = async (req, res) => {
     console.log(error)
     res.json({
       success: false,
-      error,
+      message:"The Cagory isnot found",
     });
   }
 };

@@ -40,16 +40,16 @@ const Updateproduct = () => {
 
   const navigate = useNavigate();
 
-  const success = () => {
-    if (newProductSuccess === true) {
-      navigate(`/Dashboard/patients/new/${params.ProductId}`);
-      dispatch(reset());
-    }
-  };
+  // const success = () => {
+  //   if (newProductSuccess === true) {
+  //     navigate(`/Dashboard/patients/new/${params.ProductId}`);
+  //     dispatch(reset());
+  //   }
+  // };
 
-  useEffect(() => {
-    success();
-  }, [newProductSuccess]);
+  // useEffect(() => {
+  //   success();
+  // }, [newProductSuccess]);
 
   const updateHandler = (e) => {
     e.preventDefault();
