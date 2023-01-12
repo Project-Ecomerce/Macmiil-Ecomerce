@@ -46,7 +46,7 @@ dispatch(getAllProducts())
    <div class=" sm: w-[77%] relative  overflow-x-auto shadow-md  sm:rounded-lg  lg:w-[100%]">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 sm:w-[100%] ">
       
-    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    {/* <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 
                 <th scope="col" class="px-6 py-3">
@@ -56,7 +56,7 @@ dispatch(getAllProducts())
                 Price
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Category
+                    Quantity
                 </th>
              
                 <th scope="col" class="px-6 py-3">
@@ -69,64 +69,100 @@ dispatch(getAllProducts())
                     update
                 </th>
             </tr>
-        </thead>
+        </thead> */}
         {products?.  product?.map(( product
 ) =>(
-           <tbody>
-           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ">
+ <div className='flex '>
+   <div className='border-solid border-2 border-gray-200 w-[30%] px-4 py-6  flex '>
+       <div>
+       {product.image ? (
+          <div className='w-[100%]' >
+            <img src={product.image} alt='' />
+          </div>
+        ) : (
+          ''
+        )}
+       </div>
+       <h4>{ product. title}</h4>
+       <p>${ product.Store}</p>
+       <div>
+       <Link to={`/Dashboard/patients/Edit/${product.ProductId}`}>
+               <button className='px-2 py-1 rounded  bg-gray-300 text-gray-700 hover:bg-green-300 '>
+               update
+                  </button>
+                     </Link>
+                     <Link to={`/Dashboard/patients/get/${product.ProductId}`}>
+               <button className='px-0.5 py-2 text-blue-600 '>
+                    view
+                  </button>
+                  </Link>
+       </div>
+  </div>
+ </div>
+      //      <tbody>
+      //      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ">
               
-               <th scope="row" class="flex items-center px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white ">
-               {/* <td class="px-6 py-4">
-               { product.ProductId}
-               </td> */}
-                   <div class="pl-3">
-                       <div class="text-base font-semibold">{ product. title}</div>
+      //          <th scope="row" class="flex items-center px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white ">
+      //          {/* <td class="px-6 py-4">
+      //          { product.ProductId}
+      //          </td> */}
+      //              <div class="pl-3">
+      //                  <div class="text-base font-semibold">{ product. title}</div>
                        
-                   </div>  
-               </th>
+      //              </div>  
+      //          </th>
                
-               <td class="px-6 py-4">
-               { product.Price}
-               </td>
+      //          <td class="px-6 py-4">
+      //          { product.Price}
+      //          </td>
 
-               <td class="px-6 py-4">
-                   <div class="flex items-center">
-                       <div class=""></div> { product.Store}
-                   </div>
-               </td>
+      //          <td class="px-6 py-4">
+      //              <div class="flex items-center">
+      //                  <div class=""></div> { product.Store}
+      //              </div>
+      //          </td>
+      //          <td>
+      //          {product.image ? (
+      //     <div className=''>
+      //       <img src={product.image} alt='' />
+      //     </div>
+      //   ) : (
+      //     ''
+      //   )}
+      //          </td>
 
               
-              <td class="px-6 py-4">
-              <Link to={`/Dashboard/patients/get/${product.ProductId}`}>
-              <button className='px-0.5 py-2 text-blue-600 '>
-                   view
-                 </button>
-                    </Link>
-               </td>
+      //         <td class="px-6 py-4">
+      //         <Link to={`/Dashboard/patients/get/${product.ProductId}`}>
+      //         <button className='px-0.5 py-2 text-blue-600 '>
+      //              view
+      //            </button>
+      //               </Link>
+      //          </td>
               
 
-               <td class="px-6 py-4">
-                   <button className='px-0.5 py-2  text-green-600'onAbort={deleteHandler}>
-                   delete
-                </button>
-               </td>
+      //          <td class="px-6 py-4">
+      //              <button className='px-2 py-1  text-green-600 bg-gray-300 hover:bg-red-400 rounded hover:text-white'onAbort={deleteHandler}>
+      //              delete
+      //           </button>
+      //          </td>
 
-               <td class="px-6 py-4">
-              <Link to={`/Dashboard/patients/Edit/${product.ProductId}`}>
-              <button className='px-2 py-1  bg-gray-300 text-gray-700 '>
-              update
-                 </button>
-                    </Link>
-               </td>
+      //          <td class="px-6 py-4">
+      //         <Link to={`/Dashboard/patients/Edit/${product.ProductId}`}>
+      //         <button className='px-2 py-1 rounded  bg-gray-300 text-gray-700 hover:bg-green-300 '>
+      //         update
+      //            </button>
+      //               </Link>
+      //          </td>
 
                
               
-           </tr>
-           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+      //      </tr>
+      //      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                
               
-           </tr>
-       </tbody>
+      //      </tr>
+      //  </tbody>
         ))}
     </table>
     

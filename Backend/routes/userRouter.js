@@ -20,7 +20,7 @@ router.delete('/delete/:userId',protect, user.deleteuser)
 router.put('/update/:userId', user.update)
 
 // update role
-router.put('/role/:userId',protect, user.updateRole)
+router.put('/role',protect, user.updateRole)
 // register
 router.post('/new', user.registerUser);
 // login

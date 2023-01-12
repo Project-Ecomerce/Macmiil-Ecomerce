@@ -118,7 +118,7 @@ const Createproduct = () => {
 
         <div className='ml-7'>
           <div>
-            <label htmlFor='body'>subId</label>
+            <label htmlFor='body'>image</label>
           </div>
           <div>
           <input
@@ -126,9 +126,9 @@ const Createproduct = () => {
               onChange={(e) => setimage(e.target.value)}
               type='text'
               className='px-2 py-2  w-[100%] outline-none border'
-              placeholder='063'
+              placeholder='image'
               id='Price'
-              required
+              // required
             />
           </div>
         </div>

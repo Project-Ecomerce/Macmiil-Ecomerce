@@ -160,7 +160,7 @@ const updateRole = async (req, res) => {
     try {
       const { Role, userId } = req.body;
 
-      if(req.user.Role !== "ADMIN" && "SUPERADMIN") {
+      if(req.user.Role === "ADMIN" && "SUPERADMIN") {
         res.json({
             status : "Error",
             message : "You are not allowed to do this task"

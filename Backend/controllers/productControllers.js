@@ -28,7 +28,7 @@ const getAll = async (req,res) =>{
 // create custumers
 const create = async (req,res) =>{
     try {
-        const {title,Price,Store, subId} = req.body;
+        const {title,Price,Store, subId,image} = req.body;
         console.log(req.body)
         const checkname = await prisma.product.findFirst({
             where :  {
@@ -60,7 +60,8 @@ const create = async (req,res) =>{
                 Price,
                 Store ,
                 userId:req.user.userId,
-                subatCagoryId : +subId
+                subatCagoryId : +subId,
+                image
 
             }
         })

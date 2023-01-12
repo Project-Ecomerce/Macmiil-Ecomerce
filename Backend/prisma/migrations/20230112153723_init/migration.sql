@@ -17,10 +17,10 @@ CREATE TABLE "users" (
 -- CreateTable
 CREATE TABLE "product" (
     "ProductId" SERIAL NOT NULL,
-    "title" TEXT NOT NULL,
+    "title" TEXT,
     "Description" TEXT,
     "Price" TEXT NOT NULL,
-    "image" TEXT,
+    "image" TEXT NOT NULL,
     "Store" TEXT NOT NULL,
     "userId" INTEGER NOT NULL,
     "subatCagoryId" INTEGER NOT NULL,
@@ -75,7 +75,7 @@ CREATE TABLE "catagory" (
 CREATE UNIQUE INDEX "users_Email_key" ON "users"("Email");
 
 -- AddForeignKey
-ALTER TABLE "product" ADD CONSTRAINT "product_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("userId") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "product" ADD CONSTRAINT "product_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("userId") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "product" ADD CONSTRAINT "product_subatCagoryId_fkey" FOREIGN KEY ("subatCagoryId") REFERENCES "subCatagory"("subatCagoryId") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -87,7 +87,7 @@ ALTER TABLE "cart" ADD CONSTRAINT "cart_userId_fkey" FOREIGN KEY ("userId") REFE
 ALTER TABLE "cart" ADD CONSTRAINT "cart_ProductId_fkey" FOREIGN KEY ("ProductId") REFERENCES "product"("ProductId") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "payment" ADD CONSTRAINT "payment_ProductId_fkey" FOREIGN KEY ("ProductId") REFERENCES "product"("ProductId") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "payment" ADD CONSTRAINT "payment_ProductId_fkey" FOREIGN KEY ("ProductId") REFERENCES "product"("ProductId") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "payment" ADD CONSTRAINT "payment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("userId") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -96,10 +96,10 @@ ALTER TABLE "payment" ADD CONSTRAINT "payment_userId_fkey" FOREIGN KEY ("userId"
 ALTER TABLE "payment" ADD CONSTRAINT "payment_cartId_fkey" FOREIGN KEY ("cartId") REFERENCES "cart"("cartId") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "subCatagory" ADD CONSTRAINT "subCatagory_CategoryId_fkey" FOREIGN KEY ("CategoryId") REFERENCES "catagory"("CagoryId") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "subCatagory" ADD CONSTRAINT "subCatagory_CategoryId_fkey" FOREIGN KEY ("CategoryId") REFERENCES "catagory"("CagoryId") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "subCatagory" ADD CONSTRAINT "subCatagory_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("userId") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "subCatagory" ADD CONSTRAINT "subCatagory_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("userId") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "catagory" ADD CONSTRAINT "catagory_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("userId") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "catagory" ADD CONSTRAINT "catagory_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("userId") ON DELETE CASCADE ON UPDATE CASCADE;
