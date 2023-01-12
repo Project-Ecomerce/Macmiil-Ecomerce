@@ -52,6 +52,7 @@ const Register = () => {
   
       dispatch(registration(data));
     };
+    // haysku taaban
 
   return (
     <>

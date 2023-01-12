@@ -4,7 +4,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   return (
-    <div  className='flex flex-nowrap gap-2  items-start   lg:w-[95%] mx-auto 
+    <div  className='flex flex-nowrap gap-2  items-start    mx-auto 
      sm:w-[100%] 
      '>
 

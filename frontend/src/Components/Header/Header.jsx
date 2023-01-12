@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import style from './Header.css'
 import { Link } from 'react-router-dom'
+import {User} from "../Header/User"
 import { logout } from '../../../rudex/slices/auth';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
@@ -48,7 +49,7 @@ const [nav, setnav] = useState(false);
 const handleNav = () => setnav(!nav);
 	return (
 		<header className={style. header}>
-			<h3>LOGO</h3>
+			<h3>Macmiil Online</h3>
 			<nav ref={navRef}>
 			<a href="/#">Home</a>
 
@@ -103,6 +104,7 @@ const handleNav = () => setnav(!nav);
 			<button className="nav-btn" onClick={showNavbar}>
 				<FaBars />
 			</button>
+			<User  className="Hee"/> 
 		</header>
 	);
 }

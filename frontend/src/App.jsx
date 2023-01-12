@@ -1,5 +1,5 @@
 import React from 'react'
-import Footer from './Components/Footer/Footer'
+// import Footer from './Components/Footer/Footer'
 import Header from './Components/Header/Header'
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
@@ -21,6 +21,14 @@ import User from './pages/Dashboard/user/User'
 import Createuser from './pages/Dashboard/user/Createuser'
 import Updateuser from './pages/Dashboard/user/Updateuser'
 import Role from './pages/Dashboard/user/Role'
+import Catogary from './pages/Dashboard/catogary/Catogary'
+import Createcatogary from './pages/Dashboard/catogary/Createcatogary'
+import Getone from './pages/Dashboard/catogary/Getone'
+import Updatecatogary from './pages/Dashboard/catogary/Updatecatogary'
+import Subcatogary from './pages/Dashboard/subcatogary/Subcatogary'
+import Createsub from './pages/Dashboard/subcatogary/Createsub'
+import Getonesub from './pages/Dashboard/subcatogary/Getonesub'
+import Updatesub from './pages/Dashboard/subcatogary/Updatesub'
 
 function App() {
   
@@ -33,6 +41,16 @@ function App() {
       <Route path= '/Login' element={<Login/>} />
       <Route path= '/Register' element={<Register/>} />
       <Route path='/Dashboard' element={<Dashboard />}>
+      <Route path='Catogary' element={<Catogary />} /> 
+      <Route path='patients/new' element={<Createcatogary />} />
+      <Route path='patients/get/:ProductId' element={<Getone />} />
+      <Route path='patients/Edit/:ProductId' element={<Updatecatogary />} /> 
+      {/* ========= */}
+      <Route path='Subcatogary' element={<Subcatogary />} /> 
+      <Route path='patients/new' element={<Createsub />} />
+      <Route path='patients/get/:ProductId' element={<Getonesub />} />
+      <Route path='patients/Edit/:ProductId' element={<Updatesub />} />
+      {/* ============ */}
       <Route path='User' element={<User />} />
       <Route path='User/new' element={<Createuser />} />
       <Route path='User/Edit/:userId' element={<Updateuser />} />
@@ -44,7 +62,7 @@ function App() {
           </Route>
        
      </Routes>
-      <Footer/>
+      {/* <Footer/> */}
 
      </Router>
     

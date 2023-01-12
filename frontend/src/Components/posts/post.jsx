@@ -14,13 +14,13 @@ const   Post = ({ post }) => {
       <div className=''>
         <div className=''>
           <div className=''>
-            <h2>{post?.product?.product?.title}</h2>
+            <h2>{product?.product?.title}</h2>
           </div>
-          <div className=''>{post?.product?.product?.Price}</div>
+          <div className=''>{product?.product?.Price}</div>
         </div>
         {post?.src ? (
           <div className=''>
-            <img src={post?.product?.product?.title} alt='' />
+            <img src={product?.product?.title} alt='' />
           </div>
         ) : (
           ''

@@ -1,46 +1,11 @@
+import React from 'react'
 
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {  useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { newUser} from '../../../../rudex/slices/user/userSlice';
-const Createuser = () => {
-
-    const [FirstName, setFirstName] = useState('');
-    const [LastName, setLastName] = useState('');
-    const [Email, setEmail] = useState('');
-    const [Password, setPassword] = useState('');
-    
-    const {NewuserLoading,NewuserSuccess } = useSelector(
-        (state) => state.userSlice
-      );
-
-      const dispatch = useDispatch();
-      const navigate = useNavigate();
-
-      useEffect(() => {
-        if (NewuserSuccess) {
-          navigate(`/Dashboard/User`);
-          dispatch(reset());
-        }
-      }, [NewuserSuccess]);
-
-      
-
-      const handleSubmit = (e) => {
-        e.preventDefault();
-     const data = {
-        FirstName,LastName,Email,Password
-      
-        };
-    
-        dispatch(newUser(data));
-      };
+const Createcatogary = () => {
   return (
     <div className='header  mx-auto sm:w-[90%]'>
       
-
-    <form onSubmit={handleSubmit} className='p-7 '>
+      {/* onSubmit={handleSubmit}  */}
+    <form className='p-7 '>
      <div className=' bg-white  border shadow  p-9 sm:w-[100%] 
      '>
      <div className='text-[19px] mb-5 bg-gray-100 border  p-3' >
@@ -53,8 +18,8 @@ const Createuser = () => {
         </div>
         <div>
           <input
-            value={FirstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            // value={FirstName}
+            // onChange={(e) => setFirstName(e.target.value)}
             type='text'
             className=' px-2 py-2 rounded-[5px] w-[70%] outline-none border '
             placeholder=''
@@ -74,8 +39,8 @@ const Createuser = () => {
         </div>
         <div className=''>
           <input
-            value={LastName}
-            onChange={(e) => setLastName(e.target.value)}
+            // value={LastName}
+            // onChange={(e) => setLastName(e.target.value)}
             type='text'
             className='px-2 py-2 rounded-[5px] w-[70%] outline-none border  '
             placeholder='Enter Last..'
@@ -91,8 +56,8 @@ const Createuser = () => {
         </div>
         <div>
           <input
-            value={Email}
-            onChange={(e) => setEmail(e.target.value)}
+            // value={Email}
+            // onChange={(e) => setEmail(e.target.value)}
             type='text'
             className='px-2 py-2 rounded-[5px] w-[70%] outline-none border '
             placeholder='Store'
@@ -109,11 +74,11 @@ const Createuser = () => {
         </div>
         <div>
         <input
-            value={Password}
-            onChange={(e) => setPassword(e.target.value)}
-            type='password'
+            // value={Password}
+            // onChange={(e) => setPassword(e.target.value)}
+            type='text'
             className='px-2 py-2 rounded-[5px] w-[70%] outline-none border'
-            placeholder=''
+            placeholder='063'
             id='Price'
             required
           />
@@ -123,7 +88,8 @@ const Createuser = () => {
      
       <div>
         <button className='bg-green-600 hover:bg-slate-400 text-white font-bold py-3  px-7 rounded mt-3 ml-7'>
-        {NewuserLoading ? (loading) : 'create'}
+            create
+        {/* {NewuserLoading ? (loading) : 'create'} */}
         </button>
       </div>
      </div>
@@ -134,4 +100,4 @@ const Createuser = () => {
   )
 }
 
-export default Createuser
+export default Createcatogary

@@ -23,12 +23,12 @@ dispatch(getAlluser())
     console.log(users);
   };
   return (
-    <div className='w-[100%]   sm:w-[100%]'>
-    console header 
-   <div className='head w-full flex items-center justify-around'>
+    <div className='w-[90%]   sm:w-[100%]'>
+
+   <div className='head w-full flex items-center justify-between'>
      <h1 className='text-xl font-bold'>costumer</h1>
     <Link to="/Dashboard/User/new">
-    <button className='text-xl bg-slate-600 hover:bg-slate-400 text-white font-bold py-2 px-4 rounded mb-4 mr-[8rem] '>
+    <button className=' bg-green-600 hover:bg-slate-400 text-white font-bold py-1 px-4 mt-5 mb-4 mr-[4rem] '>
        Create
      </button>
     </Link>
@@ -101,7 +101,7 @@ dispatch(getAlluser())
               
 
                <td class="px-6 py-4">
-                   <button className='px-3 py-2 bg-green-500 text-white'onAbort={deleteHandler}>
+                   <button className='px-3 py-2 bg-green-900 text-white'onAbort={deleteHandler}>
                    delete
                 </button>
                </td>

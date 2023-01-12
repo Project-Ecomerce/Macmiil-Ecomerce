@@ -55,7 +55,7 @@ createAsyncThunk('product/getall', async (_,{rejectWithValue}) =>{
       try {
         const token = getState().auth.user.token;
 
-        console.log(token)
+        // console.log(token)
   
         const { data } = await axios.post(
           'http://localhost:7000/api/product/n',
