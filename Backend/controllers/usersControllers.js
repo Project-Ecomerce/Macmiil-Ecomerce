@@ -139,6 +139,7 @@ const getOne = async (req,res) =>{
 
 const deleteuser = async(req,res) =>{
     const {userId} = req.params;
+    console.log(userId)
 
     const users = await prisma.users.delete({
         where:{

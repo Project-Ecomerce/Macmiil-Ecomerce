@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {  useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { newProduct,reset } from '../../../../rudex/slices/product/productSlice';
+import { getAllcatogary } from '../../../../rudex/slices/catogary/CatogarySlice';
 
 const Createproduct = () => {
     const [title, settitle] = useState('');
@@ -14,8 +15,17 @@ const Createproduct = () => {
         (state) => state.product
       );
 
+      const { catogary,isLoading,isError,isSuccess} = useSelector((state) => state.catogary)
+
       const dispatch = useDispatch();
       const navigate = useNavigate();
+
+      
+    useEffect(() =>{
+  
+      // invocation ()
+  dispatch(getAllcatogary())
+    },[])
 
       useEffect(() => {
         if (newProductSuccess) {
@@ -101,18 +111,29 @@ const Createproduct = () => {
 
         <div className='ml-7'>
           <div>
-            <label htmlFor='body'>subId</label>
+            <label htmlFor='body'> Select category</label>
           </div>
           <div>
-          <input
+          <select
               value={subId}
               onChange={(e) => setsubId(e.target.value)}
               type='text'
-              className='px-2 py-2  w-[100%] outline-none border'
+              className='px-2 py-2  w-[100%] outline-none border h-[50%]'
               placeholder='063'
               id='Price'
               required
-            />
+            >
+                       {catogary?.  catagory?.map(( catagory
+ ) =>(
+  <option
+                        className="p-2 "
+                        key={catagory.CagoryId}
+                        value={catagory.CagoryId}
+                      >
+                        { catagory.type}
+                      </option>
+ ))}
+            </select>
           </div>
         </div>
 

@@ -30,11 +30,12 @@ const createCategory = async (req, res) => {
           type,
         }
     })
-
-    if(checktypes) {
+    console.log(checktypes)
+    if(checktypes?.CagoryId) {
+      
         res.json({
             status : "Error",
-            msg : "typesb is already in use"
+            msg : "type is already in use"
         })
         return
     }

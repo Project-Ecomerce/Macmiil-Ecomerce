@@ -52,7 +52,8 @@ const create = async (req,res) =>{
               return;
            }
 
-        
+
+           console.log(parseInt(subId), '================')
 
         const newProducts = await prisma.product.create({
             data:{
@@ -60,7 +61,7 @@ const create = async (req,res) =>{
                 Price,
                 Store ,
                 userId:req.user.userId,
-                subatCagoryId : +subId,
+                subatCagoryId : parseInt(subId) ,
                 image
 
             }

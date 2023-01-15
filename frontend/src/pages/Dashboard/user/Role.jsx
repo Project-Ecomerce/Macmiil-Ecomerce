@@ -53,7 +53,8 @@ const Role = () => {
   
       const data = {
         userId:params.userId,
-        userId,Role
+        userId,
+        Role
       
         };
   

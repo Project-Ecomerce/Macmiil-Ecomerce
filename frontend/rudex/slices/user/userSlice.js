@@ -78,7 +78,7 @@ createAsyncThunk('user/getall', async (_,{rejectWithValue}) =>{
     'user/getOne',
     async (userId, { rejectWithValue }) => {
       try {
-        console.log(ProductId)
+        console.log(userId)
         const { data } = await axios.get(
           `http://localhost:7000/api/user/getone/${userId}`
         );
@@ -101,7 +101,7 @@ export const deleteuser = createAsyncThunk(
     try {
       const token = getState().auth.user.token;
 
-      console.log(token)
+      console.log(userId)
       const { data } = await axios.delete(
         `http://localhost:7000/api/user/delete/${userId}`,
 
@@ -194,7 +194,7 @@ console.log(data)
       reset: (state, action) => {
         state.UpdateProductLoading = false;
         state.newProductSuccess = false;
-        state.product = {};
+        state.users = {};
       },
     },
 
@@ -270,5 +270,5 @@ console.log(data)
       }
 })
 
-// export const { reset } = productSlice.actions;
+
 export default userSlice;

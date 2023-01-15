@@ -29,6 +29,7 @@ const Updateproduct = () => {
   }, [params]);
 
   useEffect(() => {
+    console.log(product)
     if (product?.ProductId) {
         settitle(product.title);
         setPrice(product.Price);

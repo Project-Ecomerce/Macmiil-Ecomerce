@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 const initialState = {
-    catogary: [],
+    subcatogary: [],
     isLoading: false,
     isError: false,
     isSuccess: false,
@@ -33,10 +33,10 @@ const initialState = {
 
 // 1. all product
 
-export const getAllcatogary = 
-createAsyncThunk('catogary/getall', async (_,{rejectWithValue}) =>{
+export const getAll = 
+createAsyncThunk('subcatogary/getall', async (_,{rejectWithValue}) =>{
     try {
-      const {data} = await axios.get('http://localhost:7000/api/Catagory/all')
+      const {data} = await axios.get('http://localhost:7000/api/subCatagory/all')
       console.log(data)
       return data
     } catch (error) {
@@ -46,8 +46,8 @@ createAsyncThunk('catogary/getall', async (_,{rejectWithValue}) =>{
   })
 
   // 2. POST REQUEST -> NEW PRODUCTS
-  export const newcatogary = createAsyncThunk(
-    'catogary/create',
+  export const newsubcatogary = createAsyncThunk(
+    'subcatogary/create',
     async (Data, { rejectWithValue, getState }) => {
       try {
         const token = getState().auth.user.token;
@@ -55,9 +55,10 @@ createAsyncThunk('catogary/getall', async (_,{rejectWithValue}) =>{
         console.log(token)
   
         const { data } = await axios.post(
-          'http://localhost:7000/api/Catagory/',
+          'http://localhost:7000/api/subCatagory/',
           {
             type: Data.type,
+            subId:Data.subId
           },
   
           {
@@ -75,36 +76,17 @@ createAsyncThunk('catogary/getall', async (_,{rejectWithValue}) =>{
     }
   );
 
-  export const getOnecatogary = createAsyncThunk(
-    'catogary/getOne',
-    async (CagoryId, { rejectWithValue }) => {
-      try {
-        console.log(ProductId)
-        const { data } = await axios.get(
-          `http://localhost:7000/api/product/getone/${CagoryId}`
-        );
-  
-        // console.log(data)
-        return data
-      } catch (error) {
-        console.log(error)
-        return rejectWithValue(error);
-      }
-    }
-  );
-
-
   // delete products
 
-export const deletecatogary = createAsyncThunk(
+export const deletesubcatogary = createAsyncThunk(
   '/catogary/delete',
-  async (CagoryId, { rejectWithValue,getState }) => {
+  async (subatCagoryId, { rejectWithValue,getState }) => {
     try {
       const token = getState().auth.user.token;
 
       console.log(token)
       const { data } = await axios.delete(
-        `http://localhost:7000/api/Catagory/delete/${CagoryId}`,
+        `http://localhost:7000/api/subCatagory/delete/${subatCagoryId}`,
 
         {
           headers: {
@@ -124,17 +106,18 @@ export const deletecatogary = createAsyncThunk(
 
 // API REQ -> EDITING product
 
-export const editcatogary = createAsyncThunk(
-  'catogary/update',
+export const editsubcatogary = createAsyncThunk(
+  'subcatogary/update',
   async (datas, { rejectWithValue,getState }) => {
     try {
       const token = getState().auth.user.token;
 
       console.log(token)
       const { data } = await axios.patch(
-        `http://localhost:7000/api/Catagory/update/${datas.CagoryId}`,
+        `http://localhost:7000/api/subCatagory/update/${datas.subatCagoryId}`,
         {
             type: datas.type,
+            subId:datas.subId
         },
 
         {
@@ -160,76 +143,54 @@ console.log(data)
       reset: (state, action) => {
         state.newcatogaryLoading = false;
         state.newcatogarySuccess = false;
-        state.catogary = {};
+        state.subcatogary = {};
       },
     },
 
     extraReducers:(builder) => {
-        builder .addCase(getAllcatogary.pending,(state,action) =>{
+        builder .addCase(getAll.pending,(state,action) =>{
           state.isLoading = true;
           state.isError = false;
           state.isSuccess = false;
-          state.catogary = [];
+          state.subcatogary = [];
         })
     
-        builder .addCase(getAllcatogary.fulfilled,(state,action) =>{
+        builder .addCase(getAll.fulfilled,(state,action) =>{
           state.isLoading = false;
           state.isError = false;
           state.isSuccess = true;
-          state.catogary = action.payload;
+          state.subcatogary = action.payload;
         })
     
-        .addCase(getAllcatogary.rejected, (state, action) => {
+        .addCase(getAll.rejected, (state, action) => {
           state.isLoading = false;
           state.isError = true;
           state.isSuccess = false;
-          state.catogary = [];
+          state.subcatogary = [];
           state.errorMessage = 'Something went wrong please try again...';
         })
 
-        // =================
-
-        builder .addCase(getOnecatogary.pending,(state,action) =>{
-          state.newcatogaryLoading = true;
-          state.newcatogaryError = false;
-          state.newcatogarySuccess = false;
-          state.Newcatogary = [];
-        })
-    
-        builder .addCase(getOnecatogary.fulfilled,(state,action) =>{
-          state.newcatogaryLoading = false;
-          state.newcatogaryError = false;
-          state.newcatogarySuccess = true;
-          state.Newcatogary = action.payload;
-        })
-    
-        .addCase(getOnecatogary.rejected, (state, action) => {
-          state.newcatogaryLoading = false;
-          state.newcatogaryError = true;
-          state.newcatogarySuccess = false;
-          state.Newcatogary = [];
-          state.newcatogaryErrorMsg = 'Something went wrong please try again...';
-        })
+        
 // =======================
-.addCase(deletecatogary.pending,(state,action) =>{
+.addCase(deletesubcatogary.pending,(state,action) =>{
   state.isLoading = true;
   state.isError = false;
   state.isSuccess = false;
-  state.catogary = [];
+  state.subcatogary = [];
 })
 
-builder .addCase(deletecatogary.fulfilled,(state,action) =>{
+builder .addCase(deletesubcatogary.fulfilled,(state,action) =>{
   state.isLoading = false;
   state.isError = false;
   state.isSuccess = true;
-  state.catogary =  action.payload;
+  state.subcatogary =  action.payload;
 })
 
-.addCase(deletecatogary.rejected, (state, action) => {
+.addCase(deletesubcatogary.rejected, (state, action) => {
   state.isLoading = false;
   state.isError = true;
   state.isSuccess = false;
-  state.catogary = [];
+  state.subcatogary = [];
   state.errorMessage = 'Something went wrong please try again...';
 })
     

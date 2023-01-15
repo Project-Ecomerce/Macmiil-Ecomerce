@@ -41,15 +41,15 @@ function App() {
       <Route path= '/Login' element={<Login/>} />
       <Route path= '/Register' element={<Register/>} />
       <Route path='/Dashboard' element={<Dashboard />}>
-      {/* <Route path='Catogary' element={<Catogary />} /> 
-      <Route path='patients/new' element={<Createcatogary />} />
-      <Route path='patients' element={<Getone />} />
-      <Route path='patients' element={<Updatecatogary />} />  */}
+      <Route path='Catogary' element={<Catogary />} /> 
+      <Route path='Catogary/new' element={<Createcatogary />} />
+      <Route path='Catogary/get/:subatCagoryId' element={<Getone />} />
+      <Route path='Catogary/Edit/:subatCagoryId' element={<Updatecatogary />} /> 
       {/* ========= */}
-      {/* <Route path='Subcatogary' element={<Subcatogary />} /> 
-      <Route path='patients/new' element={<Createsub />} />
+      <Route path='Subcatogary' element={<Subcatogary />} /> 
+      {/* <Route path='patients/new' element={<Createsub />} /> */}
       <Route path='pa' element={<Getonesub />} />
-      <Route path='patients' element={<Updatesub />} /> */}
+      <Route path='patients' element={<Updatesub />} />
       {/* ============ */}
       <Route path='User' element={<User />} />
       <Route path='User/new' element={<Createuser />} />

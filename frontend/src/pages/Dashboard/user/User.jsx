@@ -17,9 +17,9 @@ const User = () => {
 dispatch(getAlluser())
   },[])
 
-  const deleteHandler = () => {
+  const deleteHandler = (ID) => {
     
-    dispatch(deleteuser(users.ProductId));
+    dispatch(deleteuser(ID));
     console.log(users);
   };
   return (
@@ -44,24 +44,32 @@ dispatch(getAlluser())
       
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                
-                <th scope="col" class="px-6 py-3">
-                    Name
+            <th scope="col" class="px-6 py-3">
+                    ID
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    phone
+                    Firstname
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    LastName
                 </th>
                 <th scope="col" class="px-6 py-3">
                     email
                 </th>
-                <th scope="col" class="px-6 py-3">
-                Address
-                </th>
+                
                 <th scope="col" class="px-6 py-3">
                     view
                 </th>
                 <th scope="col" class="px-6 py-3">
                     edite
+                </th>
+
+                <th scope="col" class="px-6 py-3">
+                    update
+                </th>
+
+                <th scope="col" class="px-6 py-3">
+                    role
                 </th>
             </tr>
         </thead>
@@ -70,18 +78,25 @@ dispatch(getAlluser())
            <tbody>
            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ">
               
-               <th scope="row" class="flex items-center px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white ">
+               {/* <th scope="row" class="flex items-center px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white ">
+
+               </th> */}
+
                <td class="px-6 py-4">
                { users.userId}
                </td>
-                   <div class="pl-3">
+                   <td class="pl-3">
                        <div class="text-base font-semibold">{ users. FirstName}</div>
                        
-                   </div>  
-               </th>
+                   </td>  
+
+                   <td class="pl-3">
+                       <div class="text-base font-semibold">{ users. LastName}</div>
+                       
+                   </td> 
                
                <td class="px-6 py-4">
-               { users.Price}
+               { users.Email}
                </td>
 
                {/* <td class="px-6 py-4">
@@ -92,7 +107,7 @@ dispatch(getAlluser())
 
               
               <td class="px-6 py-4">
-              <Link to={`/Dashboard/patients/get/${users.userId}`}>
+              <Link to={`/Dashboard/User/get/${users.userId}`}>
               <button className='px-3 py-2 bg-green-500 text-white'>
                    view
                  </button>
@@ -101,7 +116,7 @@ dispatch(getAlluser())
               
 
                <td class="px-6 py-4">
-                   <button className='px-3 py-2 bg-green-900 text-white'onAbort={deleteHandler}>
+                   <button className='px-3 py-2 bg-green-900 text-white'onClick={()=> deleteHandler(users.userId)}>
                    delete
                 </button>
                </td>
