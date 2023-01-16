@@ -40,7 +40,7 @@ const createSubCategory = async (req, res) => {
       data: {
           type,
           img,
-          CategoryId:subId,
+          CagoryId: parseInt(subId),
           userId:req.user.userId,
           
           

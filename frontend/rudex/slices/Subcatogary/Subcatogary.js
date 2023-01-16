@@ -14,12 +14,12 @@ const initialState = {
     // NEW PRODUCT
     
 
-    catogarys: {},
+    subcatogarys: {},
     UpdateLoading: false,
-    newcatogaryLoading: false,
-    newcatogarySuccess: false,
-    newcatogaryError: false,
-    newcatogaryErrorMsg: '',
+    newsubcatogaryLoading: false,
+    newsubcatogarySuccess: false,
+    newsubcatogaryError: false,
+    newsubcatogaryErrorMsg: '',
 
 // get one
     Newcatogary: {},
@@ -58,7 +58,8 @@ createAsyncThunk('subcatogary/getall', async (_,{rejectWithValue}) =>{
           'http://localhost:7000/api/subCatagory/',
           {
             type: Data.type,
-            subId:Data.subId
+            subId:Data.subId,
+            img:Data.img
           },
   
           {
@@ -117,7 +118,8 @@ export const editsubcatogary = createAsyncThunk(
         `http://localhost:7000/api/subCatagory/update/${datas.subatCagoryId}`,
         {
             type: datas.type,
-            subId:datas.subId
+            subId:datas.subId,
+            img:datas.img
         },
 
         {
@@ -141,8 +143,8 @@ console.log(data)
     initialState,
     reducers:{
       reset: (state, action) => {
-        state.newcatogaryLoading = false;
-        state.newcatogarySuccess = false;
+        state.newsubcatogaryLoading = false;
+        state.newsubcatogarySuccess = false;
         state.subcatogary = {};
       },
     },

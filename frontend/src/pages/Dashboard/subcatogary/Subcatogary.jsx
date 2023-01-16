@@ -24,6 +24,14 @@ const Subcatogary = () => {
     };
   return (
    <div>
+      <div className='head w-full flex items-center justify-between m-2 '>
+     <h1 className='text-xl font-bold'>costumer</h1>
+    <Link to="/Dashboard/Subcatogary/new">
+    <button className='text-xl bg-slate-600 hover:bg-slate-400 text-white font-bold py-1 px-5 rounded mb-4 mr-[8rem]  '>
+       Create
+     </button>
+    </Link>
+     </div>
     {isLoading? isLoading:(
         <div>
           <div className='head w-full  items-center justify-between'>
@@ -50,19 +58,19 @@ const Subcatogary = () => {
                  
              </tr>
          </thead>
-          {subcatogary?.catagory?.map(( subcatogary
+          {subcatogary?.catagory?.map(( catagory
  ) =>( 
             <tbody>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ">
                
                 <th scope="row" class="flex items-center px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white ">
                 <td class="px-6 py-4">
-                { subcatogary?.catagory?.type}
+                {catagory.type}
                 
                 </td>  
                 </th>  
                 <td class="px-6 py-4">
-               <Link to={`/Dashboard/Catogary/Edit/${subcatogary?.subatCagoryId?.subatCagoryId}`}>
+               <Link to={`/Dashboard/Subcatogary/Edit/${catagory.subatCagoryId}`}>
                <button className='px-3 py-2 bg-green-500 text-white'>
                update
                   </button>

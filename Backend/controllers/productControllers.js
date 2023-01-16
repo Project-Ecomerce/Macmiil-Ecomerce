@@ -17,6 +17,7 @@ const getAll = async (req,res) =>{
             product
         });
     } catch (error) {
+        console.log(error)
         res.json({
             status:'Error',
             error,
@@ -53,7 +54,7 @@ const create = async (req,res) =>{
            }
 
 
-           console.log(parseInt(subId), '================')
+           console.log(parseInt(subId), )
 
         const newProducts = await prisma.product.create({
             data:{

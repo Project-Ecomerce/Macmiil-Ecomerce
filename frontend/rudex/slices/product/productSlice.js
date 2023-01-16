@@ -23,10 +23,7 @@ const initialState = {
 
 // get one
     Newproduct: {},
-    newProductLoading: false,
-    newProductSuccess: false,
-    newProductError: false,
-    newProductErrorMsg: '',
+
 
 
     

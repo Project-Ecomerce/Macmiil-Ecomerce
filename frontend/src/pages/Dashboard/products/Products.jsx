@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+// import { Swiper, SwiperSlide } from 'swiper';
 import { useEffect } from 'react';
 import {useDispatch,useSelector} from 'react-redux'
 import {getAllProducts ,deleteProduct} from '../../../../rudex/slices/product/productSlice'
@@ -17,9 +18,9 @@ const Products = () => {
 dispatch(getAllProducts())
   },[])
 
-  const deleteHandler = () => {
+  const deleteHandler = (ID) => {
     
-    dispatch(deleteProduct(products.ProductId));
+    dispatch(deleteProduct(ID));
     console.log(products);
   };
 
@@ -73,9 +74,9 @@ dispatch(getAllProducts())
   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ">
      
       <th scope="row" class="flex items-center px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white ">
-      {/* <td class="px-6 py-4">
+      <td class="px-6 py-4">
       { product.ProductId}
-      </td> */}
+      </td>
           <div class="pl-3">
               <div class="text-base font-semibold">{ product. title}</div>
               
@@ -88,7 +89,7 @@ dispatch(getAllProducts())
 
       <td class="px-6 py-4">
           <div class="flex items-center">
-              <div class=""></div> { product.Store}
+              <div class="">{ product.Store}</div> 
           </div>
       </td>
       <td>
@@ -112,7 +113,7 @@ dispatch(getAllProducts())
      
 
       <td class="px-6 py-4">
-          <button className='px-2 py-1  text-green-600 bg-gray-300 hover:bg-red-400 rounded hover:text-white'onAbort={deleteHandler}>
+          <button className='px-2 py-1  text-green-600 bg-gray-300 hover:bg-red-400 rounded hover:text-white'onClick={()=> deleteHandler(product.ProductId)}>
           delete
        </button>
       </td>

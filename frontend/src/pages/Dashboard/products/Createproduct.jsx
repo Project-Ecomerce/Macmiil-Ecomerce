@@ -80,9 +80,9 @@ const Createproduct = () => {
           </div>
           <div>
             <input
-              value={Price}
+              value= {Price}
               onChange={(e) => setPrice(e.target.value)}
-              type='text'
+              type='number'
               className='px-2 py-2  w-[100%] outline-none border'
               placeholder='Type here price'
               id='Price'
@@ -100,7 +100,7 @@ const Createproduct = () => {
             <input
               value={Store}
               onChange={(e) => setStore(e.target.value)}
-              type='text'
+              type='number'
               className='px-2 py-2  w-[100%] outline-none border '
               placeholder='Store'
               id='Store'
@@ -114,7 +114,18 @@ const Createproduct = () => {
             <label htmlFor='body'> Select category</label>
           </div>
           <div>
-          <select
+
+          <input
+              value={subId}
+              onChange={(e) => setsubId(e.target.value)}
+              type='text'
+              className='px-2 py-2  w-[100%] outline-none border '
+              placeholder='Store'
+              id='Store'
+              required
+            />
+
+          {/* <select
               value={subId}
               onChange={(e) => setsubId(e.target.value)}
               type='text'
@@ -133,7 +144,7 @@ const Createproduct = () => {
                         { catagory.type}
                       </option>
  ))}
-            </select>
+            </select> */}
           </div>
         </div>
 

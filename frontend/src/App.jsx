@@ -29,12 +29,14 @@ import Subcatogary from './pages/Dashboard/subcatogary/Subcatogary'
 import Createsub from './pages/Dashboard/subcatogary/Createsub'
 import Getonesub from './pages/Dashboard/subcatogary/Getonesub'
 import Updatesub from './pages/Dashboard/subcatogary/Updatesub'
+import Search from './Components/swiper/Search'
 
 function App() {
   
   return (
     <div>
      <Router>
+      <Search/>
      <Header/>
      <Routes>
       <Route path= '/' element={<Home/>} />
@@ -43,13 +45,13 @@ function App() {
       <Route path='/Dashboard' element={<Dashboard />}>
       <Route path='Catogary' element={<Catogary />} /> 
       <Route path='Catogary/new' element={<Createcatogary />} />
-      <Route path='Catogary/get/:subatCagoryId' element={<Getone />} />
-      <Route path='Catogary/Edit/:subatCagoryId' element={<Updatecatogary />} /> 
+      <Route path='Catogary/get/:CagoryId' element={<Getone />} />
+      <Route path='Catogary/Edit/:CagoryId' element={<Updatecatogary />} /> 
       {/* ========= */}
       <Route path='Subcatogary' element={<Subcatogary />} /> 
-      {/* <Route path='patients/new' element={<Createsub />} /> */}
-      <Route path='pa' element={<Getonesub />} />
-      <Route path='patients' element={<Updatesub />} />
+      <Route path='Subcatogary/new' element={<Createsub />} />
+      <Route path='Subcatogary/get/:subatCagoryId' element={<Getonesub />} />
+      <Route path='Subcatogary/Edit/:subatCagoryId' element={<Updatesub />} />
       {/* ============ */}
       <Route path='User' element={<User />} />
       <Route path='User/new' element={<Createuser />} />

@@ -12,8 +12,8 @@ const Sidebar = () => {
     { name: "Dashboard", link: "/Dashboard/dashboardtwo", icon: MdOutlineDashboard },
     { name: "user", link: "/Dashboard/User", icon: AiOutlineUser },
     { name: "products", link: "/Dashboard/products", icon: FiMessageSquare },
-    { name: "Subcatogary", link: "/Dashboard/Subcatogary' ", icon: TbReportAnalytics, margin: true },
-    { name: "Cart", link: "/", icon: FiShoppingCart },
+    { name: "Subcatogary", link: "/Dashboard/Subcatogary ", icon: TbReportAnalytics, margin: true },
+    { name: "Cart", link: "/Dashboard/Catogary", icon: FiShoppingCart },
     { name: "Saved", link: "/", icon: AiOutlineHeart, margin: true },
 
   ];

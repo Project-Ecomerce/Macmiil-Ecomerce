@@ -17,11 +17,7 @@ const Posts = () => {
   dispatch(getAllProducts())
     },[])
   
-    // const deleteHandler = () => {
-      
-    //   dispatch(deleteProduct(products.ProductId));
-    //   console.log(products);
-    // };
+  
 
   return (
     <div>
@@ -33,13 +29,16 @@ const Posts = () => {
  <div className=' grid grid-cols-4  '>
    <div className='border-solid border-2 border-gray-200  px-4 py-6   '>
        <div>
-       {product.image ? (
+       {/* {product.image ? (
           <div className='w-[100%]' >
             <img src={product.image} alt='' />
           </div>
         ) : (
           ''
-        )}
+        )} */}
+
+
+        
        </div>
        <h4>{ product. title}</h4>
        <p>${ product.Store}</p>
