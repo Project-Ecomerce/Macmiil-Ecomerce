@@ -40,7 +40,10 @@ const Posts = () => {
 
         
        </div>
-       <h4>{ product. title}</h4>
+       <div>
+       <img src={product.image} alt='' />
+       </div>
+       <h4>{ product. title}</h4> 
        <p>${ product.Store}</p>
        <div>
        <Link to={`/Dashboard/patients/Edit/${product.ProductId}`}>
@@ -55,7 +58,7 @@ const Posts = () => {
                   </Link>
        </div>
   </div>
-  <div className='border-solid border-2 border-gray-200  px-4 py-6   '>
+  {/* <div className='border-solid border-2 border-gray-200  px-4 py-6   '>
        <div>
        {product.image ? (
           <div className='w-[100%]' >
@@ -79,7 +82,7 @@ const Posts = () => {
                   </button>
                   </Link>
        </div>
-  </div>
+  </div> */}
 
  </div>
   ))}

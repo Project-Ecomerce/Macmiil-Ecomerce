@@ -29,7 +29,7 @@ const Createproduct = () => {
 
       useEffect(() => {
         if (newProductSuccess) {
-          navigate(`/Dashboard/products`);
+          navigate("/Dashboard/products");
           dispatch(reset());
         }
       }, [newProductSuccess]);

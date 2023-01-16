@@ -24,6 +24,19 @@ dispatch(getAllProducts())
     console.log(products);
   };
 
+//   useEffect(() =>{
+
+//     // invocation ()
+// dispatch(deleteProduct())
+//   },[])
+
+  useEffect(() => {
+    if (isSuccess) {
+      // navigate("/Dashboard/patients");
+      dispatch(deleteProduct());
+    }
+  }, [isSuccess]);
+
 
   return (
     
