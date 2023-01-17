@@ -37,7 +37,7 @@ model product {
   title String
   Description String?
   Price String
-  image String @default("https://unsplash.com/photos/1SAnrIxw5OY")
+  image String ?
   Store String
   userId Int
   subatCagoryId Int

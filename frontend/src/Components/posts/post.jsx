@@ -11,7 +11,7 @@ const   Post = ({ post }) => {
 
            {/* BODY AND TITLE */}
 
-      <div className=''>
+      {/* <div className=''>
         <div className=''>
           <div className=''>
             <h2>{product?.product?.title}</h2>
@@ -25,7 +25,7 @@ const   Post = ({ post }) => {
         ) : (
           ''
         )}
-      </div>
+      </div> */}
       
     </div>
   )

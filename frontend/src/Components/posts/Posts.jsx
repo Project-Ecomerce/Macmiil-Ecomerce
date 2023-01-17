@@ -28,38 +28,10 @@ const Posts = () => {
 ) =>(
  <div className=' grid grid-cols-4  '>
    <div className='border-solid border-2 border-gray-200  px-4 py-6   '>
-       <div>
-       {/* {product.image ? (
-          <div className='w-[100%]' >
-            <img src={product.image} alt='' />
-          </div>
-        ) : (
-          ''
-        )} */}
-
-
-        
-       </div>
-       <div>
-       <img src={product.image} alt='' />
-       </div>
-       <h4>{ product. title}</h4> 
-       <p>${ product.Store}</p>
-       <div>
-       <Link to={`/Dashboard/patients/Edit/${product.ProductId}`}>
-               <button className='px-2 py-1 rounded  bg-gray-300 text-gray-700 hover:bg-green-300 '>
-               update
-                  </button>
-                     </Link>
-                     <Link to={`/Dashboard/patients/get/${product.ProductId}`}>
-               <button className='px-0.5 py-2 text-blue-600 '>
-                    view
-                  </button>
-                  </Link>
-       </div>
-  </div>
-  {/* <div className='border-solid border-2 border-gray-200  px-4 py-6   '>
-       <div>
+      
+      
+  <div className='border-solid border-2 border-gray-200  px-4 py-6   '>
+       {/* <div> */}
        {product.image ? (
           <div className='w-[100%]' >
             <img src={product.image} alt='' />
@@ -67,7 +39,7 @@ const Posts = () => {
         ) : (
           ''
         )}
-       </div>
+       {/* </div> */}
        <h4>{ product. title}</h4>
        <p>${ product.Store}</p>
        <div>
@@ -82,7 +54,8 @@ const Posts = () => {
                   </button>
                   </Link>
        </div>
-  </div> */}
+  </div>
+  </div>
 
  </div>
   ))}

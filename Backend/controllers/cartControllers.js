@@ -32,6 +32,33 @@ const createcart = async (req, res) => {
     try {
       const {qty, subId} = req.body;
 
+      const existingPro = await prisma.cart.findFirst({
+        where: {
+          qty,
+        },
+        include: {
+          product: true,
+        },
+      });
+
+      if (existingPro) {
+        const updatedPro = await prisma.cart.update({
+          where: {
+            cartId: existingPro.cartId,
+          },
+          data: {
+            qty:
+              existingPro.qty === existingPro.qty
+                ? existingPro.qty
+                : existingPro.qty + 1,
+          },
+          include: {
+            product: true,
+          },
+        });
+        
+      } else
+
       console.log(req.user)
       const newcart = await prisma.cart.create({
         data:{

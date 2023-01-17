@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import style from './Header.css'
 import { Link } from 'react-router-dom'
-import {User} from "../Header/User"
+// import {User} from "../Header/User"
 import { logout } from '../../../rudex/slices/auth';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
@@ -45,6 +45,8 @@ useEffect(() => {
 }, [user
 ]);
 
+
+
 const [nav, setnav] = useState(false);
 const handleNav = () => setnav(!nav);
 	return (
@@ -68,11 +70,13 @@ const handleNav = () => setnav(!nav);
 					<button>
 					<Link to='/Register'>Register</Link>
 					</button>
+
+				
 				
 				</>
 			  ):
 			  <>
-				<button onClick={logoutHandler}>
+	<button onClick={logoutHandler}>
 				
 				logout
 				
@@ -104,7 +108,13 @@ const handleNav = () => setnav(!nav);
 			<button className="nav-btn" onClick={showNavbar}>
 				<FaBars />
 			</button>
-			<User  className="Hee"/> 
+			{/* <User  className="Hee"/>  */}
+			{/* <div className="bg-green-300 rounded-full w-[3rem] h-[3rem] text-[28px] font-bold text-black text-center ml-[13rem] ">
+				<h1 className="ml-3">{user?.user?.FirstName[0].toUpperCase()}</h1></div> */}
+			
+			<div className="bg-green-300 rounded-full w-[3rem] h-[3rem] text-[28px] font-bold text-black text-center  ">
+				<h1 className="ml-3">{user?.user?.FirstName[0].toUpperCase()}</h1></div>
+			
 		</header>
 	);
 }

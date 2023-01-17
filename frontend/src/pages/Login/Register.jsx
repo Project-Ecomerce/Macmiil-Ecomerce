@@ -52,8 +52,7 @@ const Register = () => {
   
       dispatch(registration(data));
     };
-    // haysku taaban
-
+    
   return (
     <>
     <section className="bg-gray-50 dark:bg-gray-900">

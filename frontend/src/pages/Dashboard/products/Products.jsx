@@ -30,12 +30,12 @@ dispatch(getAllProducts())
 // dispatch(deleteProduct())
 //   },[])
 
-  useEffect(() => {
-    if (isSuccess) {
-      // navigate("/Dashboard/patients");
-      dispatch(deleteProduct());
-    }
-  }, [isSuccess]);
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     // navigate("/Dashboard/patients");
+  //     dispatch(deleteProduct());
+  //   }
+  // }, [isSuccess]);
 
 
   return (
@@ -106,13 +106,17 @@ dispatch(getAllProducts())
           </div>
       </td>
       <td>
-      {product.image ? (
+      {/* {product.image
+ ? (
  <div className=''>
    <img src={product.image} alt='' />
  </div>
 ) : (
  ''
-)}
+)} */}
+ <div class="">
+ <img src = { product.image} alt="" />
+ </div> 
       </td>
 
      
@@ -124,12 +128,12 @@ dispatch(getAllProducts())
            </Link>
       </td>
      
-
+{/* 
       <td class="px-6 py-4">
           <button className='px-2 py-1  text-green-600 bg-gray-300 hover:bg-red-400 rounded hover:text-white'onClick={()=> deleteHandler(product.ProductId)}>
           delete
        </button>
-      </td>
+      </td> */}
 
       <td class="px-6 py-4">
      <Link to={`/Dashboard/patients/Edit/${product.ProductId}`}>
