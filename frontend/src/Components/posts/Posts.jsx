@@ -39,6 +39,8 @@ const Posts = () => {
         ) : (
           ''
         )}
+
+       
        {/* </div> */}
        <h4>{ product. title}</h4>
        <p>${ product.Store}</p>

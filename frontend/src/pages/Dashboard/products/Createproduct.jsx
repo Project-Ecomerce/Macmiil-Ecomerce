@@ -10,7 +10,7 @@ const Createproduct = () => {
     const [Price, setPrice] = useState('');
     const [Store, setStore] = useState('');
     const [subId, setsubId] = useState('');
-    const [image, setimage] = useState('');
+    const [img, setimg] = useState('');
     const {newProductLoading,newProductSuccess } = useSelector(
         (state) => state.product
       );
@@ -39,7 +39,7 @@ const Createproduct = () => {
       const handleSubmit = (e) => {
         e.preventDefault();
      const data = {
-      title,Price,Store,subId,image
+      title,Price,Store,subId,img
       
         };
     
@@ -154,8 +154,8 @@ const Createproduct = () => {
           </div>
           <div>
           <input
-              value={image}
-              onChange={(e) => setimage(e.target.value)}
+              value={img}
+              onChange={(e) => setimg(e.target.value)}
               type='text'
               className='px-2 py-2  w-[100%] outline-none border'
               placeholder='image'

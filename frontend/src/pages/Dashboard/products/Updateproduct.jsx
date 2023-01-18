@@ -29,7 +29,6 @@ const Updateproduct = () => {
   }, [params]);
 
   useEffect(() => {
-    console.log(product)
     if (product?.ProductId) {
         settitle(product.title);
         setPrice(product.Price);
@@ -41,12 +40,12 @@ const Updateproduct = () => {
 
   const navigate = useNavigate();
 
-  const success = () => {
-    if (newProductSuccess === true) {
-      navigate(`/Dashboard/patients/new/${params.ProductId}`);
-      dispatch(reset());
-    }
-  };
+  // const success = () => {
+  //   if (newProductSuccess === true) {
+  //     navigate(`/Dashboard/patients/new/${params.ProductId}`);
+  //     dispatch(reset());
+  //   }
+  // };
 
   useEffect(() => {
     success();

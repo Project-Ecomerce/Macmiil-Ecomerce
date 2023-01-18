@@ -29,7 +29,7 @@ const getAll = async (req,res) =>{
 // create custumers
 const create = async (req,res) =>{
     try {
-        const {title,Price,Store, subId,image} = req.body;
+        const {title,Price,Store, subId,img} = req.body;
         console.log(req.body)
         const checkname = await prisma.product.findFirst({
             where :  {
@@ -54,7 +54,7 @@ const create = async (req,res) =>{
            }
 
 
-           console.log(parseInt(subId), )
+        //    console.log(parseInt(subId), )
 
         const newProducts = await prisma.product.create({
             data:{
@@ -62,8 +62,8 @@ const create = async (req,res) =>{
                 Price,
                 Store ,
                 userId:req.user.userId,
-                subatCagoryId : parseInt(subId) ,
-                image
+                subatCagoryId : +subId ,
+                img
 
             }
         })

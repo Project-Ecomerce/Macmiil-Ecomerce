@@ -61,7 +61,7 @@ createAsyncThunk('product/getall', async (_,{rejectWithValue}) =>{
             Price: productData.Price,
             Store: productData.Store,
             subId: productData.subId,
-            image: productData.image,
+            img: productData.img,
           },
   
           {

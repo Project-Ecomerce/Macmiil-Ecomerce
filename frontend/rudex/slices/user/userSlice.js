@@ -164,7 +164,7 @@ export const editrole = createAsyncThunk(
 
       console.log(token)
       const { data } = await axios.put(
-        `http://localhost:7000/api/user/role/${datas.userId}`,
+        `http://localhost:7000/api/user/role`,
         {
           userId: datas.userId,
           Role: datas.Role,

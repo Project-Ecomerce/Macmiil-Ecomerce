@@ -1,9 +1,10 @@
 import React from 'react'
+import './index.css'
 // import Footer from './Components/Footer/Footer'
-import Header from './Components/Header/Header'
+// import Header from './Components/Headers/Header'
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
-import Home from './pages/Home/Home'
+import Pages from './pages/Home/Pages'
 
 import Dashboard from './pages/Dashboard/Dashboard'
 // import Users from './pages/Dashboard/Users'
@@ -29,17 +30,19 @@ import Subcatogary from './pages/Dashboard/subcatogary/Subcatogary'
 import Createsub from './pages/Dashboard/subcatogary/Createsub'
 import Getonesub from './pages/Dashboard/subcatogary/Getonesub'
 import Updatesub from './pages/Dashboard/subcatogary/Updatesub'
-import Search from './Components/swiper/Search'
+// import Search from './Components/swiper/Search'
+import Header from './common/Header/Header'
+import Footer from './common/footer/Footer'
 
 function App() {
   
   return (
     <div>
      <Router>
-      <Search/>
+      {/* <Search/> */}
      <Header/>
      <Routes>
-      <Route path= '/' element={<Home/>} />
+      <Route path= '/' element={<Pages/>} />
       <Route path= '/Login' element={<Login/>} />
       <Route path= '/Register' element={<Register/>} />
       <Route path='/Dashboard' element={<Dashboard />}>
@@ -64,7 +67,7 @@ function App() {
           </Route>
        
      </Routes>
-      {/* <Footer/> */}
+      <Footer/>
 
      </Router>
     

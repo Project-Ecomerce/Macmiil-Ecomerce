@@ -1,6 +1,6 @@
 // import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../../../rudex/slices/auth';
 import { useNavigate } from 'react-router-dom';
@@ -60,7 +60,9 @@ function Login() {
             </button>
         <a href="#">Forgot your password?</a>
         <p className="text">Don't have an account?</p>
+        <Link to='/Register'>
         <button className="buttonShadow">Create new account</button>
+        </Link>
     </div>
 </form>
 

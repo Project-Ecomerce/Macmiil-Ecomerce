@@ -37,7 +37,7 @@ model product {
   title String
   Description String?
   Price String
-  image String ?
+  img String 
   Store String
   userId Int
   subatCagoryId Int
