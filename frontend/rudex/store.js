@@ -10,7 +10,8 @@ const store = configureStore({
         auth: authSlice.reducer,
         userSlice: userSlice.reducer,
         catogary: catogarySlice.reducer,
-        sub : SubcatogarySlice.reducer
+        sub : SubcatogarySlice.reducer,
+        
        
 
     }

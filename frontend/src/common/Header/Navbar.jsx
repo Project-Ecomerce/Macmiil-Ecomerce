@@ -37,8 +37,8 @@ useEffect(() => {
   }
   {
     if (user?.token) {
-      // setshowbtn(false);
-      // return;
+      setshowbtn(false);
+      return;
       }
   }
     setadmin(true);
@@ -100,11 +100,39 @@ const handleNav = () => setnav(!nav);
 </ul>
             </>):
             <>
-            	<button onClick={logoutHandler}>
+             <ul className='link f_flex uppercase {MobileMenu ? "nav-links-MobileMenu" : "nav-links"} onClick={() => setMobileMenu(false)}'>
+
+
+              
+<li>
+  <Link to='/'>home</Link>
+</li>
+<li>
+  <Link to='/pages'>pages</Link>
+</li>
+<li>
+  <Link to='/user'>user account</Link>
+</li>
+<li>
+  <Link to='/vendor'>vendor account</Link>
+</li>
+<li>
+<button>
+					<Link to='/Login'>login</Link>
+					</button>
+</li>
+<li>
+  <Link to='/contact'>contact</Link>
+</li>
+<li>
+           <button onClick={logoutHandler}>
 				
 				logout
 				
 				</button>
+           </li>
+</ul>
+         
         <>
         {admin? (
 

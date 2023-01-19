@@ -1,6 +1,51 @@
 import React from 'react'
+import { useState } from 'react';
+import { useEffect } from 'react';
+import {useDispatch,useSelector} from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom';
+import {editsubcatogary,getOnesub } from '../../../../rudex/slices/Subcatogary/Subcatogary'
 
 const Updatesub = () => {
+  const params = useParams();
+  const dispatch = useDispatch();
+  const {Newsubcatogary, isLoading,isSuccess } = useSelector(
+    (state) => state.sub
+  );
+  const [type, settype] = useState('');
+  const [subId, setsubId] = useState('');
+  const [img, setimg] = useState('');
+
+    useEffect(() => {
+    dispatch(getOnesub(params?.subatCagoryId));
+    console.log(params.subatCagoryId)
+  }, [params]);
+
+    useEffect(() => {
+    if (Newsubcatogary?.subatCagoryId) {
+        settype(Newsubcatogary.type);
+        // setsubId(Newsubcatogary.subId);
+        // setimg(Newsubcatogary.img);
+    }
+  }, [params, isLoading]);
+
+  const navigate = useNavigate();
+
+    const updateHandler = (e) => {
+    e.preventDefault();
+
+    if (!type ) {
+      alert('Please provide the required info.');
+      return;
+    }
+
+    const data = {
+      subatCagoryId:params.subatCagoryId,
+      type,
+    
+      };
+
+    dispatch(editsubcatogary(data));
+  };
   return (
     <div className='header mx-auto sm:w-[100%] '>
       
@@ -14,12 +59,12 @@ const Updatesub = () => {
   <div className=' gap-[5rem] ml-7 mt-5'>
   <div className>
       <div >
-        <label htmlFor='Name '>FirstName</label>
+        <label htmlFor='Name '>type</label>
       </div>
       <div>
         <input
-          // value={FirstName}
-          // onChange={(e) => setFirstName(e.target.value)}
+          // value={type}
+          onChange={(e) => settype(e.target.value)}
           type='text'
           className=' px-2 py-2  w-[90%] outline-none border  '
           placeholder=''
@@ -31,14 +76,14 @@ const Updatesub = () => {
 
     
   </div>
-  <div className='ml-7'>
+  {/* <div className='ml-7'>
       <div >
-        <label htmlFor='title'>LastName</label>
+        <label htmlFor='title'>subId</label>
       </div>
       <div>
         <input
-          // value={LastName}
-          // onChange={(e) => setLastName(e.target.value)}
+          value={subId}
+          onChange={(e) => setsubId(e.target.value)}
           type='text'
           className=' px-2 py-2 rounded-[5px] w-[90%] outline-none border'
           placeholder='063'
@@ -46,9 +91,9 @@ const Updatesub = () => {
           required
         />
       </div>
-    </div>
+    </div> */}
     <div/>
-   <div className='ml-7'>
+   {/* <div className='ml-7'>
       <div >
         <label htmlFor='Store'>Email</label>
       </div>
@@ -80,7 +125,7 @@ const Updatesub = () => {
           required
         />
       </div>
-    </div>
+    </div> */}
 
    
     <div>

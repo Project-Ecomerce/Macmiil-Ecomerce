@@ -16,7 +16,7 @@ const Search = ({ CartItem }) => {
     <>
       <section className='search'>
         <div className='container c_flex'>
-          <div className='logo width  '>
+          <div className='logo width  w-[20%]'>
             <img src="./image/macmiil.png" alt='' />
           </div>
 
@@ -32,7 +32,7 @@ const Search = ({ CartItem }) => {
             <div className="bg-gray-100 rounded-full w-[3rem] h-[3rem] text-[28px] font-bold text-black text-center  ">
 				<h1 className="mt-1">{user?.user?.FirstName[0].toUpperCase()}</h1></div>
             <div className='cart'>
-              <Link to='/cart'>
+              <Link to=''>
                 <i className='fa fa-shopping-bag icon-circle'></i>
                 {/* <span>{CartItem.length === 0 ? "" : CartItem.length}</span> */}
               </Link>

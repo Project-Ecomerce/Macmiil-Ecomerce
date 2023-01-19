@@ -22,7 +22,7 @@ const initialState = {
     newsubcatogaryErrorMsg: '',
 
 // get one
-    Newcatogary: {},
+    Newsubcatogary: {},
  
 
 
@@ -136,6 +136,24 @@ console.log(data)
   }
 );
 
+export const getOnesub = createAsyncThunk(
+  'subatCagory/getOne',
+  async (subatCagoryId, { rejectWithValue }) => {
+    try {
+      console.log(subatCagoryId)
+      const { data } = await axios.patch(
+        `http://localhost:7000/api/subCatagory/update/${subatCagoryId}`
+      );
+
+      console.log(data)
+      return data
+    } catch (error) {
+      console.log(error)
+      return rejectWithValue(error);
+    }
+  }
+);
+
 
 
  const catogarySlice = createSlice({
@@ -172,6 +190,30 @@ console.log(data)
           state.errorMessage = 'Something went wrong please try again...';
         })
 
+        // =============================
+
+        builder .addCase(getOnesub.pending,(state,action) =>{
+          state.isLoading = true;
+          state.isError = false;
+          state.isSuccess = false;
+          state.subcatogarys = [];
+        })
+    
+        builder .addCase(getOnesub.fulfilled,(state,action) =>{
+          state.isLoading = false;
+          state.isError = false;
+          state.isSuccess = true;
+          state.subcatogarys = action.payload;
+        })
+    
+        .addCase(getOnesub.rejected, (state, action) => {
+          state.isLoading = false;
+          state.isError = true;
+          state.isSuccess = false;
+          state.subcatogarys = [];
+          state.errorMessage = 'Something went wrong please try again...';
+        })
+
         
 // =======================
 .addCase(deletesubcatogary.pending,(state,action) =>{
@@ -194,6 +236,42 @@ builder .addCase(deletesubcatogary.fulfilled,(state,action) =>{
   state.isSuccess = false;
   state.subcatogary = [];
   state.errorMessage = 'Something went wrong please try again...';
+})
+
+.addCase(newsubcatogary.pending, (state, action) => {
+  state.isLoading = true;
+  state.isSuccess = false;
+})
+.addCase(newsubcatogary.fulfilled, (state, action) => {
+  state.isLoading = false;
+  state.isSuccess = true;
+  state.isError = false;
+  state.errorMessage = '';
+  state.subcatogarys = action.payload;
+})
+.addCase(newsubcatogary.rejected, (state, action) => {
+  state.isLoading = false;
+  state.isSuccess = false;
+  state.isError = true;
+  state.errorMessage = 'Something went wrong';
+})
+
+.addCase(editsubcatogary.pending, (state, action) => {
+  state.isLoading = true;
+  state.isSuccess = false;
+})
+.addCase(editsubcatogary.fulfilled, (state, action) => {
+  state.isLoading = false;
+  state.isSuccess = true;
+  state.isError = false;
+  state.errorMessage = '';
+  state.subcatogarys = action.payload;
+})
+.addCase(editsubcatogary.rejected, (state, action) => {
+  state.isLoading = false;
+  state.isSuccess = false;
+  state.isError = true;
+  state.errorMessage = 'Something went wrong';
 })
     
       }

@@ -7,7 +7,7 @@ import { logout } from '../../../rudex/slices/auth';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 
-function header() {
+function Hheader() {
 	const navRef = useRef();
 
 	const showNavbar = () => {
@@ -51,6 +51,12 @@ const [nav, setnav] = useState(false);
 const handleNav = () => setnav(!nav);
 	return (
 		<header className={style. header}>
+			 <div className='catgrories d_flex'>
+            <span class='fa-solid fa-border-all'></span>
+            <h4>
+              Categories <i className='fa fa-chevron-down'></i>
+            </h4>
+          </div>
 			<h3>Macmiil Online</h3>
 			<nav ref={navRef}>
 			<a href="/#">Home</a>
@@ -109,8 +115,8 @@ const handleNav = () => setnav(!nav);
 				<FaBars />
 			</button>
 			{/* <User  className="Hee"/>  */}
-			{/* <div className="bg-green-300 rounded-full w-[3rem] h-[3rem] text-[28px] font-bold text-black text-center ml-[13rem] ">
-				<h1 className="ml-3">{user?.user?.FirstName[0].toUpperCase()}</h1></div> */}
+			<div className="bg-green-300 rounded-full w-[3rem] h-[3rem] text-[28px] font-bold text-black text-center ml-[13rem] ">
+				<h1 className="ml-3">{user?.user?.FirstName[0].toUpperCase()}</h1></div>
 			
 			{/* <div className="bg-green-300 rounded-full w-[3rem] h-[3rem] text-[28px] font-bold text-black text-center  ">
 				<h1 className="ml-3">{user?.user?.FirstName[0].toUpperCase()}</h1></div> */}
@@ -119,4 +125,4 @@ const handleNav = () => setnav(!nav);
 	);
 }
 
-export default header;
+export default Hheader;

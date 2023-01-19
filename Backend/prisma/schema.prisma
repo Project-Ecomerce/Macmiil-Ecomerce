@@ -77,7 +77,7 @@ model payment {
 model subCatagory {
   subatCagoryId Int @id @default(autoincrement())
   type String
-  img String @default("https://unsplash.com/photos/1SAnrIxw5OY")
+  img String 
   CagoryId Int 
   Product product[]
   catogory catagory @relation(fields: [CagoryId], references: [CagoryId],onDelete: Cascade)

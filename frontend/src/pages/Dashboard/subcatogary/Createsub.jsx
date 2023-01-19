@@ -9,7 +9,7 @@ const Createsub = () => {
   const [subId, setsubId] = useState('');
   const [img, setimg] = useState('');
   
-  const {newsubcatogaryLoading,newsubcatogarySuccess } = useSelector(
+  const { newsubcatogaryLoading,isSuccess } = useSelector(
       (state) => state.sub
     );
 
@@ -17,11 +17,11 @@ const Createsub = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-      if (newsubcatogarySuccess) {
-        navigate('Subcatogary/new');
+      if (isSuccess) {
+        navigate('/Dashboard/Subcatogary');
         dispatch(reset());
       }
-    }, [newsubcatogarySuccess]);
+    }, [isSuccess]);
 
     
 
@@ -29,6 +29,8 @@ const Createsub = () => {
       e.preventDefault();
    const data = {
     type,
+    subId,
+    img
     
       };
   
@@ -56,7 +58,7 @@ const Createsub = () => {
             onChange={(e) => settype(e.target.value)}
             type='text'
             className=' px-2 py-2 rounded-[5px] w-[70%] outline-none border '
-            placeholder=''
+            placeholder='inter your type'
             id='Name'
             required
           />

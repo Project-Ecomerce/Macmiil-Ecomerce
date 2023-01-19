@@ -15,15 +15,7 @@ function Pages() {
           <Annocument />
           <Wrapper />
       
-     {/* <div className=' '>
-     <div className=' w-[18%]'>
-          <Categories/>
-        </div>
-      <div>
-      <SlideCard/>
-      </div>
-     </div> */}
-   {/* <Posts /> */}
+    
     </div>
   )
 }

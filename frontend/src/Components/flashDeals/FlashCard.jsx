@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
 const SampleNextArrow = (props) => {
-  const { onClick } = props
+
 
   return (
     <div className='control-btn' onClick={onClick}>
@@ -29,7 +29,7 @@ const SamplePrevArrow = (props) => {
     </div>
   )
 }
-const FlashCard = ({ productItems, addToCart }) => {
+const FlashCard = ({  addToCart }) => {
 
   const dispatch = useDispatch();
   const { products,isLoading,isError,isSuccess} = useSelector((state) => state.product)
@@ -54,7 +54,7 @@ dispatch(getAllProducts())
   const settings = {
     dots: false,
     infinite: true,
-    speed: 1000,
+    speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
@@ -70,7 +70,8 @@ dispatch(getAllProducts())
               <div className='product mtop'>
                 <div className='img'>
                   {/* <span className='discount'>{productItems.discount}% Off</span> */}
-                  <img src={product.image} alt='' />
+                  <img src={product.img} alt='' />
+                  {/* <div>{product.img}</div> */}
                   <div className='product-like'>
                     <label>{count}</label> <br /> 
                     <i className='fa-regular fa-heart' onClick={increment}></i>
@@ -90,7 +91,7 @@ dispatch(getAllProducts())
                     {/* step : 3  
                      if hami le button ma click garryo bahne 
                     */}
-                    <button onClick={() => addToCart()} >
+                    <button onClick={() => addToCart(products)} >
                       <i className='fa fa-plus'></i>
                     </button>
                   </div>
