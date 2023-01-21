@@ -27,3 +27,19 @@
   left: 0;
   margin: auto;
 }
+
+@media   screem and (width:668px) {
+  .container{
+  flex-direction: column;
+  left: 2rem;
+  }
+ .homeSlide h1{
+  width: 20%;
+ }
+.homeSlide ul li button {
+  padding: 5px;
+}
+.right{
+  display: none;
+}
+}

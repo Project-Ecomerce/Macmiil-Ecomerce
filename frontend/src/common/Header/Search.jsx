@@ -20,7 +20,7 @@ const Search = ({ CartItem }) => {
             <img src="./image/macmiil.png" alt='' />
           </div>
 
-          <div className='search-box f_flex'>
+          <div className='search-box hidden md:flex'>
 
             <i className='fa fa-search'></i>
             <input type='text' placeholder='Search and hit enter...' />

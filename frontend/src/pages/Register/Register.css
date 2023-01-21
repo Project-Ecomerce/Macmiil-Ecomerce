@@ -1,0 +1,142 @@
+.midweyn{
+    width: 90%;
+    display: flex;
+    gap: -10px;
+    margin: auto;
+    border: 1px solid rgb(172, 172, 172);
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+   
+    
+}
+.sawirka img{
+    width: 50%;
+    margin: auto;
+    height: 80%;
+    text-align: center;
+
+}
+.halfcontianer{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    margin: auto;
+}
+.halfcontianer h1{
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 1rem;
+    /* margin-right: 20rem; */
+}
+.halfcontianer input{
+    width: 100%;
+}
+.first label{
+    text-transform: capitalize;
+    font-size: 17px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.first{
+    display:grid;
+}
+.first input{
+    padding: 10px;
+  /* border: revert; */
+  width: 100%;
+  border-radius: 0.2rem;
+background: rgb(236, 230, 230);
+
+}
+.first input, ::placeholder{
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: capitalize;
+    color: black;
+}
+.last label{
+    text-transform: capitalize;
+    font-size: 17px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.last{
+    display:grid;
+}
+.last input{
+    padding: 10px;
+  /* border: revert; */
+  width: 100%;
+  border-radius: 0.2rem;
+ background: rgb(236, 230, 230);
+
+}
+.last input, ::placeholder{
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: capitalize;
+     color: black;
+   
+}
+.Emial label{
+    text-transform: capitalize;
+    font-size: 17px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.Emial{
+    display:grid;
+}
+.Emial input{
+    padding: 10px;
+  /* border: revert; */
+  width: 100%;
+ border-radius: 0.2rem;
+background: rgb(236, 230, 230);
+
+
+}
+.Emial input, ::placeholder{
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: capitalize;
+     color: black;
+}
+.pass label{
+    text-transform: capitalize;
+    font-size: 17px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.pass{
+    display:grid;
+}
+.pass input{
+    padding: 10px;
+  /* border: revert; */
+  width: 100%;
+ border-radius: 0.3rem;
+ background: rgb(236, 230, 230);
+
+}
+.pass  input, ::placeholder{
+    font-weight: bold;
+    font-size: 15px;
+    text-transform: capitalize;
+    color: black;
+}
+.save{
+    margin-top: 1rem;
+    padding: 8px;
+    background: rgb(72, 101, 197);
+    text-align: center;
+    width: 100%;
+    border-radius: 0.3rem;
+      color: white;
+    font-weight: 800;
+}
+.save:hover{
+    background: rgb(53, 219, 81);
+    color: white;
+    font-weight: 800;
+}
