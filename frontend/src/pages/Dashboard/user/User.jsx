@@ -26,9 +26,9 @@ dispatch(getAlluser())
     <div className='w-[90%]   sm:w-[100%]'>
 
    <div className='head w-full flex items-center justify-between'>
-     <h1 className='text-xl font-bold'>costumer</h1>
+     <h1 className='text-xl font-bold  '>costumer</h1>
     <Link to="/Dashboard/User/new">
-    <button className=' bg-green-600 hover:bg-slate-400 text-white font-bold py-1 px-4 mt-5 mb-4 mr-[4rem] '>
+    <button className=' bg-green-300 hover:bg-slate-400 text-white font-bold py-1 px-4 mt-5 mb-4 mr-[4rem] '>
        Create
      </button>
     </Link>

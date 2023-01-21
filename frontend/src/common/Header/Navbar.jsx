@@ -1,7 +1,7 @@
 // import React, { useState } from "react"
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import style from './Header.css'
+import './Header.css'
 import { Link } from 'react-router-dom'
 // import {User} from "../Header/User"
 import { logout } from '../../../rudex/slices/auth';

@@ -1,28 +1,59 @@
 /* ===== Boxicons CSS ===== */
 @import url("https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css");
 
+.midguud{
+    display: flex;
+    margin: auto;
+    width: 90%;
+    /* border: 2px solid rgba(172, 255, 47, 0.073); */
+    align-items: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* background: black; */
+/* From https://css.glass */
+background: rgba(255, 255, 255, 0.39);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(11.5px);
+-webkit-backdrop-filter: blur(11.5px);
+border: 1px solid rgba(255, 255, 255, 1);
+    
+}
+.imge img{
+    
+    width: 100%;
+    margin: auto;
+
+    /* height: 100%; */
+    /* display: block; */
+    /* background: rgb(196, 209, 183);/ */
+}
+
 .login {
-    margin-top: 10px;
+    /* margin-top: 5px; */
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
     width: 100%;
+ 
+ 
 }
 
 .login > div {
     display: flex;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     align-items: center;
     flex-direction: column;
     padding: 80px;
     background-color: #fff;
-    border: 1px solid rgb(0, 0, 0, .1);
+    /* border: 1px solid rgb(0, 0, 0, .1); */
+    
 }
 
 .login .title {
     color: rgb(30, 30, 30);
-    font-size: 18px;
+    font-size: 25px;
     font-weight: bold;
     margin: 30px auto 20px;
 }
@@ -32,7 +63,7 @@
     border-radius: 4px;
     margin: 10px auto;
     padding: 11px 15px;
-    background-color: rgb(245, 245, 245);
+    background-color: rgba(174, 169, 169, 0.794);
     outline: none;
     border: 1px solid rgb(0, 0, 0, 0);
     font-size: 15px;
@@ -40,7 +71,7 @@
     transition: .3s;
 }
 .login input::placeholder {
-    color: rgb(200, 200, 200);
+    color: rgb(8, 6, 6);
 }
 .login input:hover {
     background-color: #F1EFF1;
@@ -48,7 +79,7 @@
 .login input:focus {
     background-color: #fff;
     border: 1px solid rgb(3, 6, 12);
-    box-shadow: 0 0 4px 2px rgb(50, 50, 50, .1);
+    /* box-shadow: 0 0 4px 2px rgb(50, 50, 50, .1); */
 }
 .login input:valid {
     border: 1px solid rgb(220, 220, 220);
@@ -81,7 +112,8 @@
     border: 1px solid rgb(50, 50, 50, .1);
 }
 .login .buttonShadow:hover {
-    background-color: rgb(50, 50, 50, .2);
+    background-color: rgba(19, 78, 140, 0.913);
+    color: white;
 }
 
 .login a {
@@ -98,13 +130,77 @@
 
 @media only screen and (max-width: 830px) {
 
+
+
+
+
+
     .login > div {
         border-radius: 0;
         width: 100%;
         height: 100%;
         padding: 0;
-        overflow: auto;
+        overflow: none;
         box-shadow: none;
+    }
+
+
+}
+@media only screen and (max-width: 768px) {
+
+
+.imge imge{
+ 
+ display: none;
+}
+.midguud{
+    overflow: none;
+}
+.login button{
+    width: 100%;
+}
+
+
+   /* .login > div{
+    width: 100%;
+   }  */
+    
+
+}
+@media only screen and (max-width:350px){
+    .midguud{
+        width: 100%;
+       
+    }
+    
+.imge imge{
+ 
+ display: none;
+}
+    .xxx {
+        padding: 0px 3rem;
+        
+        width: 80%;
+        margin: 0 auto;
+    }
+    .xxx input{
+        width: 15rem;
+    }
+    .pos{
+        padding: 0px 3rem;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .pos input{
+        width: 15rem;
+    }
+    .but{
+        padding: 0px 3rem;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .but button{
+    width: 17rem ;
     }
 
 }
